@@ -9,10 +9,12 @@
     position: fixed; 
     width: 100%; 
     top: 0;
-    z-index: 100000;
+    z-index: 1000000000000;
     transition: background-color 0.4s ease, box-shadow 0.4s ease;
     box-shadow: 0px 12px 24px -23px rgba(3, 2, 19, 0.25);
 }
+
+
 
 .header_pag.scrolled {
     background-color: rgba(255, 255, 255, 0.9);
@@ -49,3 +51,4 @@
     background-color: rgb(239, 238, 238);
     height: 100000vh;
 }
+
