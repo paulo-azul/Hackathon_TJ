@@ -1,0 +1,51 @@
+.header_pag{
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    color: black;
+    padding: 15px;
+    font-size: 18px;
+    position: fixed; 
+    width: 100%; 
+    top: 0;
+    z-index: 100000;
+    transition: background-color 0.4s ease, box-shadow 0.4s ease;
+    box-shadow: 0px 12px 24px -23px rgba(3, 2, 19, 0.25);
+}
+
+.header_pag.scrolled {
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(10px); 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.div_icone{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+}
+
+.img_icone{
+    width: 35px;
+}
+
+.links_header{
+    display: flex;
+    flex-direction: row;
+    color: gray;
+    gap: 19px;
+    align-items: center;
+}
+
+.p{
+    color: black;
+}
+
+.pag_inicio{
+    background-color: rgb(239, 238, 238);
+    height: 100000vh;
+}
