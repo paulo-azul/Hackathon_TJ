@@ -175,8 +175,30 @@ const caminhos = {
     37: { 105: 'SIM', 601: 'Problemas com Banco ou Cartão de Crédito?', 604: 'SIM', 629: 'NAO'},
     38: { 105: 'SIM', 601: 'Problemas com Banco ou Cartão de Crédito?', 604: 'SIM', 629: 'SIM'},
     39: { 105: 'SIM', 601: 'Problemas com Banco ou Cartão de Crédito?', 604: 'NAO',},
-    99: { 101: 'NAO SEI', 102: 'NAO SEI', 103: 'NAO SEI', 104: 'NAO SEI'}
-
+    99: { 101: 'NAO SEI', 102: 'NAO SEI', 103: 'NAO SEI', 104: 'NAO SEI'},
+    99: { 101: 'NAO SEI', 102: 'NAO SEI', 104: 'NAO SEI', 103: 'NAO SEI'},
+    99: { 101: 'NAO SEI', 103: 'NAO SEI', 102: 'NAO SEI', 104: 'NAO SEI'},
+    99: { 101: 'NAO SEI', 103: 'NAO SEI', 104: 'NAO SEI', 102: 'NAO SEI'},
+    99: { 101: 'NAO SEI', 104: 'NAO SEI', 102: 'NAO SEI', 103: 'NAO SEI'},
+    99: { 101: 'NAO SEI', 104: 'NAO SEI', 103: 'NAO SEI', 102: 'NAO SEI'},
+    99: { 102: 'NAO SEI', 101: 'NAO SEI', 103: 'NAO SEI', 104: 'NAO SEI'},
+    99: { 102: 'NAO SEI', 101: 'NAO SEI', 104: 'NAO SEI', 103: 'NAO SEI'},
+    99: { 102: 'NAO SEI', 103: 'NAO SEI', 101: 'NAO SEI', 104: 'NAO SEI'},
+    99: { 102: 'NAO SEI', 103: 'NAO SEI', 104: 'NAO SEI', 101: 'NAO SEI'},
+    99: { 102: 'NAO SEI', 104: 'NAO SEI', 101: 'NAO SEI', 103: 'NAO SEI'},
+    99: { 102: 'NAO SEI', 104: 'NAO SEI', 103: 'NAO SEI', 101: 'NAO SEI'},
+    99: { 103: 'NAO SEI', 101: 'NAO SEI', 102: 'NAO SEI', 104: 'NAO SEI'},
+    99: { 103: 'NAO SEI', 101: 'NAO SEI', 104: 'NAO SEI', 102: 'NAO SEI'},
+    99: { 103: 'NAO SEI', 102: 'NAO SEI', 101: 'NAO SEI', 104: 'NAO SEI'},
+    99: { 103: 'NAO SEI', 102: 'NAO SEI', 104: 'NAO SEI', 101: 'NAO SEI'},
+    99: { 103: 'NAO SEI', 104: 'NAO SEI', 101: 'NAO SEI', 102: 'NAO SEI'},
+    99: { 103: 'NAO SEI', 104: 'NAO SEI', 102: 'NAO SEI', 101: 'NAO SEI'},
+    99: { 104: 'NAO SEI', 101: 'NAO SEI', 102: 'NAO SEI', 103: 'NAO SEI'},
+    99: { 104: 'NAO SEI', 101: 'NAO SEI', 103: 'NAO SEI', 102: 'NAO SEI'},
+    99: { 104: 'NAO SEI', 102: 'NAO SEI', 101: 'NAO SEI', 103: 'NAO SEI'},
+    99: { 104: 'NAO SEI', 102: 'NAO SEI', 103: 'NAO SEI', 101: 'NAO SEI'},
+    99: { 104: 'NAO SEI', 103: 'NAO SEI', 101: 'NAO SEI', 102: 'NAO SEI'},
+    99: { 104: 'NAO SEI', 103: 'NAO SEI', 102: 'NAO SEI', 101: 'NAO SEI'},
 };
 for (const [entidadeId, caminho] of Object.entries(caminhos)) { popularRespostas(parseInt(entidadeId), caminho); }
 
