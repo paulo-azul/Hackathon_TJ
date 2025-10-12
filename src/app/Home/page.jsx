@@ -21,6 +21,12 @@ import Footer from '../componentes/footer';
 
 export default function Home() {
 
+   const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   const [isScrolled, setIsScrolled] = useState(false)
   const largura = useTela();
 
@@ -43,7 +49,7 @@ export default function Home() {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []); 
+  }, [largura]); 
 
   
   const isMobile = largura !== null && largura < 768;
@@ -52,19 +58,19 @@ export default function Home() {
 
   return (
     <div>
-      <header id="main-header" className={`header_pag ${isScrolled ? 'scrolled' : ''}`}>
+      <header id="main-header" className={`header_pag1 ${isScrolled ? 'scrolled' : ''}`}>
         <div className="div_icone">
           <Image src={icone_principal} alt="logo JurisConsultor" className="img_icone"></Image>
           <h1>JurisConsultor</h1>
         </div>
-        {!isMobile && (
+        {isClient && !isMobile && (
           <div className="links_header">
             <p className="p">Início</p>
-            <Link  href={"/Identificar"} className="lnk">Identificar Necessidades</Link>
-            <Link  href={"/Duvidas"} className="lnk">Dúvidas frequentes</Link> 
+            <Link  href="/Identificar" className="lnk">Identificar Necessidades</Link>
+            <Link  href="/Duvidas" className="lnk">Dúvidas frequentes</Link> 
           </div>
         )}
-        {isMobile && (
+        {isClient && isMobile && (
             <>
               <NavbarMobile />
             </>
@@ -79,8 +85,8 @@ export default function Home() {
           <h1 className="pag_inicio_txt_ini_tit">Descubra como resolver seus problemas jurídicos</h1>
           <p className="pag_inicio_txt_ini_tit_p">Responda algumas perguntas e nosso sistema inteligente identificará qual sua necessidade jurídica e como você pode resolver seu problema.</p>
           <div className="div_links_paginitxt">
-            <Link href={"/Identificar"} className="linkazul" >Começar agora</Link>
-            <Link href={"/Duvidas"} className="linkn">Dúvidas frequentes</Link> 
+            <Link href="/Identificar" className="linkazul" >Começar agora</Link>
+            <Link href="/Duvidas" className="linkn">Dúvidas frequentes</Link> 
           </div>
         </div>
       </div>
@@ -140,7 +146,7 @@ export default function Home() {
           <div className="necessidade_jurd">
             <h1>Pronto para descobrir sua necessidade jurídica?</h1>
             <h1>Nosso sistema de perguntas levará apenas alguns minutos</h1>
-            <Link href={"/Identificar"} className="linkamarelo" >Inicar Identificação</Link>
+            <Link href="/Identificar" className="linkamarelo" >Inicar Identificação</Link>
           </div>
         </div>
 
