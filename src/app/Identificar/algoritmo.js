@@ -71,7 +71,8 @@ export const perguntas = [
 
     // --- Ramo Consumo ---
     {id: 201, texto: 'Você já tentou resolver diretamente com a empresa/lugar onde comprou?', preRequisito: { perguntaId: 101, resposta: 'SIM' }},
-    {id: 202, texto: 'O que aconteceu após tentar resolver com a empresa?', preRequisito: { perguntaId: 201, resposta: 'SIM' }, opcoes: ["Não resolveram ou não responderam.", "Fizeram um acordo mas não cumpriram."]},
+    {id: 202, texto: 'O que aconteceu após tentar resolver com a empresa?', preRequisito: { perguntaId: 201, resposta: 'SIM' }},
+    {id: 203, texto: 'Não resolveram ou não responderam?', preRequisito : {perguntaId : 201, resposta: 'SIM'}},
 
     // --- Ramo Conflitos ---
     {id: 301, texto: 'Houve agressão física, ameaça ou algum crime?', preRequisito: { perguntaId: 102, resposta: 'SIM' }},
@@ -144,8 +145,8 @@ function popularRespostas(entidadeId, caminho) {
  */
 const caminhos = {
     // Ramo Consumo
-    1: { 101: 'SIM', 201: 'SIM', 202: 'Não resolveram ou não responderam.' },
-    2: { 101: 'SIM', 201: 'SIM', 202: 'Fizeram um acordo mas não cumpriram.' },
+    1: { 101: 'SIM', 201: 'SIM', 203: 'NÃO'},
+    2: { 101: 'SIM', 201: 'SIM', 203: 'SIM'},
     20: { 101: 'SIM', 201: 'NÃO' },
 
     // Ramo Conflitos

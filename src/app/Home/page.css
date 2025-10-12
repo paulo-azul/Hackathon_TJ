@@ -10,15 +10,19 @@
 }
 
 * {
-  overflow-x: hidden;
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
+}
+
+html, body {
+  overflow-x: hidden;
 }
 
 .header_pag11 {
   background-color: var(--cor-branco);
   display: flex;
   justify-content: space-around;
+  align-items: center; /* Adicionado para melhor alinhamento vertical */
   color: var(--cor-texto-principal);
   padding: 15px;
   font-size: 18px;
@@ -69,7 +73,7 @@
   min-height: 80vh;
   flex-direction: column;
   align-items: center;
-  padding-top: 80px; 
+  padding: 100px 20px 20px; /* Ajustado padding */
 }
 
 .div_icone_incio1 {
@@ -115,6 +119,7 @@
   gap: 20px;
   padding-top: 30px;
   align-items: center;
+  overflow: visible;
 }
 
 .linkazul1 {
@@ -151,11 +156,15 @@
   padding-bottom: 50px;
   font-family: 'Roboto', sans-serif;
   text-align: center;
+  max-width: 600px; /* Adicionado para melhor legibilidade */
 }
 
 .com_funcss_div1 {
   display: flex;
   gap: 30px;
+  justify-content: center; /* CORRIGIDO */
+  flex-wrap: wrap; /* CORRIGIDO */
+  width: 100%;
 }
 
 .div_areas1 {
@@ -184,17 +193,21 @@
 .desc_areas1 {
   color: var(--cor-texto-secundario);
   font-size: 18px;
+  max-width: 600px; /* Adicionado para melhor legibilidade */
 }
 
 .comp_areas1 {
   display: flex;
   gap: 30px;
+  justify-content: center; /* CORRIGIDO */
+  flex-wrap: wrap; /* CORRIGIDO */
   padding-bottom: 20px;
+  width: 100%;
 }
 
 .area_final1 {
   background-color: var(--cor-branco);
-  padding: 40px 20px 140px;
+  padding: 40px 20px 100px; /* Ajustado padding */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -202,14 +215,14 @@
 
 .necessidade_jurd1 {
   padding: 50px;
-  background-color: var(--cor-azul-bahia);
+  background-color: var(--cor-vermelho-bahia);
   color: var(--cor-branco);
   text-align: center;
   display: flex;
   flex-direction: column;
   gap: 25px;
   align-items: center;
-  width: 90%;
+  width: 100%;
   max-width: 900px;
   border-radius: 12px;
   font-family: 'Montserrat', sans-serif;
@@ -217,7 +230,7 @@
 }
 
 .linkamarelo1 {
-  background-color: var(--cor-vermelho-bahia);
+  background-color: var(--cor-azul-bahia);
   color: var(--cor-branco);
   padding: 14px 28px;
   border-radius: 8px;
@@ -237,11 +250,11 @@
 }
 
 @media (max-width: 768px) {
+  .pag_inicio_txt_ini_tit1 { font-size: 28px; }
   .pag_inicio_txt_ini1 { font-size: 17px; }
-  .pag_inicio_txt_ini_tit1 { font-size: 26px; }
   .div_links_paginitxt1 { flex-direction: column; gap: 20px; width: 100%; }
-  .linkazul1 { width: 90%; text-align: center; }
-  .com_funcss_div1, .comp_areas1 { flex-direction: column; gap: 30px; }
+  .linkazul1 { width: 90%; max-width: 300px; text-align: center; } /* Adicionado max-width */
+  .com_funcss_div1, .comp_areas1 { flex-direction: column; align-items: center; gap: 30px; }
   .tit_areas1, .div_como_funciona1 { font-size: 24px; }
   .desc_areas1, .desc_como_func1 { font-size: 17px; }
   .necessidade_jurd1 { padding: 40px 20px; font-size: 20px; }
