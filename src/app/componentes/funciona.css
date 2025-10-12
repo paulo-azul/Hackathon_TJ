@@ -1,0 +1,24 @@
+
+.func_dic_comp{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    border:  solid 1.5px;
+    border-radius: 10px;
+    padding-top: 20px;
+    padding-left: 20px;
+    border-color: rgb(220, 217, 217);
+    font-size: 15px;
+    gap: 10px;
+    width: 350px;
+    height: 170px;
+    padding-right: 10px;
+}
+
+.img_componente_func{
+    width: 50px;
+}
+
+.descricao_func{
+    color: #6b7280;
+}
