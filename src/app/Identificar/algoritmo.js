@@ -42,6 +42,16 @@ export const entidades = [
     {id: 27, nome: 'Encaminhamento: Contratar um Advogado Particular (OAB).'},
     {id: 28, nome: 'Encaminhamento: Defensoria Pública'},
     {id: 29, nome: 'Acessar os órgãos como JARI e CETRAN( consultar o site do gov.br na área de serviços detran ) . Em caso de valores muito altos de multa ou algo relacionado buscar o Juizado Especial.'},
+    {id: 30, nome: 'Enviar um requerimento no site da banca examinadora ou ligar para o SAC da organizadora (como FGV, IBFC, CESPE/CEBRASPE, IDECAN.)'},
+    {id: 31, nome: 'Não: "Esse é um bom primeiro passo e pode resolver mais rápido. Procure a Ouvidoria e o conselho de saúde'},
+    {id: 32, nome: 'Ligar para a operadora, se não resolver, encaminhar para a resposta sim  '},
+    {id: 33, nome: 'Realizar um reclamação Inicial pela NIP (notificação de intermediação preliminar no portal da ANS-link) quem resolve isso depois é a ANS de forma administrativa e eles encaminham para o processo, se necessário  '},
+    {id: 34, nome: 'Encaminhamento: Contratar um Advogado Particular (OAB).'},
+    {id: 35, nome: 'Encaminhamento: Defensoria Pública da União (DPU) ou Juizado Especial Federal (para causas de até 60 salários mínimos).'},
+    {id: 36, nome: 'Você precisa aguardar a decisão oficial ou entrar com um recurso administrativo(pedido para olhar novamente a decisão) no próprio INSS- por meio do Conselho de recursos da previdência social'},
+    {id: 37, nome: 'Busque o PROCON'},
+    {id: 38, nome: 'Registre a reclamação junto ao banco central e mediação na câmera da OAB'},
+    {id: 39, nome: 'Contate o atendimento ao cliente'},
     {id: 99, nome: 'Não foi possível determinar um encaminhamento específico com as informações fornecidas. Recomendamos que você procure a Defensoria Pública para uma orientação detalhada sobre o seu caso.'}
 ];
 
@@ -101,7 +111,7 @@ export const perguntas = [
     {id: 626, texto: 'Ir para o PROCON', preRequisito: { perguntaId: 604, resposta: 'SIM' }},
     {id: 627, texto: 'O PROCON resolveu o seu problema?', preRequisito: { perguntaId: 626, resposta: 'SIM' }},
     {id: 628, texto: 'Tem número de protocolo com o plano?', preRequisito: { perguntaId: 621, resposta: 'NAO' }},
-    {id: 629, texto: 'Tem número de protocolo com o plano?', preRequisito: { perguntaId: 621, resposta: 'NAO' }},
+    {id: 629, texto: 'Já buscou o PROCON?', preRequisito: { perguntaId: 621, resposta: 'NAO' }},
 
 ];
 
@@ -151,7 +161,21 @@ const caminhos = {
     19: { 105: 'SIM', 601: 'Problemas com Banco ou Cartão de Crédito.', 604: 'SIM', 605: 'NAO'},
     20: { 101: 'SIM', 201: 'NAO' },
     21: { 105: 'SIM', 601: 'Problemas com Banco ou Cartão de Crédito.', 604: 'NAO' },
-    24: { 105: 'SIM', 601: 'Problemas com Banco ou Cartão de Crédito?', 604: 'SIM'}
+    24: { 105: 'SIM', 601: 'Problemas com Banco ou Cartão de Crédito?', 604: 'SIM'},
+    27: { 105: 'SIM', 601: 'Um problema com o governo ou um serviço público (água, luz, IPTU, multas).', 606: 'NAO', 608: 'NAO', 610: 'SIM', 611: 'SIM' },
+    28: { 105: 'SIM', 601: 'Um problema com o governo ou um serviço público (água, luz, IPTU, multas).', 606: 'NAO', 608: 'NAO', 610: 'SIM', 611: 'NAO' },
+    30: { 105: 'SIM', 601: 'Um problema com o governo ou um serviço público (água, luz, IPTU, multas).', 606: 'SIM',  },
+    31: { 105: 'SIM', 601: 'Questões de saúde (negativa de atendimento no SUS, falta de remédio, problemas com o plano de saúde)', 621: "SIM", 622: 'NAO'},
+    22: { 105: 'SIM', 601: 'Questões de saúde (negativa de atendimento no SUS, falta de remédio, problemas com o plano de saúde)', 621: "SIM", 622: 'SIM'},
+    32: { 105: 'SIM', 601: 'Questões de saúde (negativa de atendimento no SUS, falta de remédio, problemas com o plano de saúde)', 624: "NAO"},
+    33: { 105: 'SIM', 601: 'Questões de saúde (negativa de atendimento no SUS, falta de remédio, problemas com o plano de saúde)', 624: "SIM"},
+    34: { 105: 'SIM', 601: 'Previdência e benefícios do governo (aposentadoria, auxílio-doença, BPC/LOAS no INSS).', 603: 'SIM', 625: 'SIM'},
+    35: { 105: 'SIM', 601: 'Previdência e benefícios do governo (aposentadoria, auxílio-doença, BPC/LOAS no INSS).', 603: 'SIM', 625: 'NAO'},
+    36: { 105: 'SIM', 601: 'Previdência e benefícios do governo (aposentadoria, auxílio-doença, BPC/LOAS no INSS).', 603: 'NAO'},
+    37: { 105: 'SIM', 601: 'Problemas com Banco ou Cartão de Crédito?', 604: 'SIM', 629: 'NAO'},
+    38: { 105: 'SIM', 601: 'Problemas com Banco ou Cartão de Crédito?', 604: 'SIM', 629: 'SIM'},
+    39: { 105: 'SIM', 601: 'Problemas com Banco ou Cartão de Crédito?', 604: 'NAO',}
+
 };
 for (const [entidadeId, caminho] of Object.entries(caminhos)) { popularRespostas(parseInt(entidadeId), caminho); }
 
