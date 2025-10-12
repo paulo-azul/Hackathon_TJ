@@ -38,7 +38,9 @@ export const entidades = [
     {id: 24, nome: 'Realizar um reclamação Inicial pela NIP (notificação de intermediação preliminar no portal da ANS-link) quem resolve isso depois é a ANS de forma administrativa e eles encaminham para o processo, se necessário  '},
     {id: 25, nome: 'Ligar para a operadora, se não resolver, encaminhar para a resposta sim  '},
     {id: 26, nome: 'Você precisa aguardar a decisão oficial ou entrar com um recurso administrativo(pedido para olhar novamente a decisão) no próprio INSS- por meio do Conselho de recursos da previdência social'},
-    
+    {id: 27, nome: 'Encaminhamento: Contratar um Advogado Particular (OAB).'},
+    {id: 28, nome: 'Encaminhamento: Defensoria Pública'},
+    {id: 29, nome: 'Acessar os órgãos como JARI e CETRAN( consultar o site do gov.br na área de serviços detran ) . Em caso de valores muito altos de multa ou algo relacionado buscar o Juizado Especial.'},
     {id: 99, nome: 'Não foi possível determinar um encaminhamento específico com as informações fornecidas. Recomendamos que você procure a Defensoria Pública para uma orientação detalhada sobre o seu caso.'}
 ];
 
@@ -82,11 +84,8 @@ export const perguntas = [
     {id: 606, texto: 'Seu problema é relacionado a um concurso?', preRequisito: {perguntaId: 601, resposta: 'Um problema com o gorveno ou um serviço público (água,luz,IPTU,multas)'}},
     {id: 607, texto: 'Enviar um requerimento no site da banca examinadora ou ligar para o SAC da organizadora (como FGV, IBFC, CESPE/CEBRASPE, IDECAN.)', preRequisito: {perguntaId: 606, resposta: 'SIM'}},
     {id: 608, texto: 'Seu problema está relacionado com o trânsito', preRequisito: {perguntaId: 606, resposta: 'NAO'}},
-    {id: 609, texto: 'Acessar os órgãos como JARI e CETRAN( consultar o site do gov.br na área de serviços detran ) . Em caso de valores muito altos de multa ou algo relacionado buscar o Juizado Especial. ', preRequisito: {perguntaId: 608, resposta: 'SIM'}},
     {id: 610, texto: 'Seu problema é com algum serviço público? IPTU, IPVA - SEFAZ( pagamentos, atrasos, falhas na comunicação e emissão )', preRequisito: {perguntaId: 608, resposta: 'NAO'}},
-    {id: 611, texto: 'Você pode pagar por um advogado', preRequisito: {perguntaId: 610, resposta: 'SIM'}},
-    {id: 612, texto: 'Encaminhamento: Contratar um Advogado Particular (OAB).', preRequisito: {perguntaId: 611, resposta: 'SIM'}},
-    {id: 613, texto: 'Encaminhamento: Defensoria Pública', preRequisito: {perguntaId: 611, resposta: 'NAO'}},
+    {id: 611, texto: 'Você pode pagar por um advogado?', preRequisito: {perguntaId: 610, resposta: 'SIM'}},
     //Se a resposta for B
     {id: 621, texto: 'É pelo SUS?', preRequisito: { perguntaId: 602, resposta: 'SIM' }},
     {id: 622, texto: 'Você já tentou a Ouvidoria do SUS ou a Secretaria de Saúde do seu município/estado?', preRequisito: { perguntaId: 621, resposta: 'SIM' }},
@@ -136,12 +135,14 @@ const caminhos = { 1: { 101: 'SIM', 201: 'SIM', 202: 'Não resolveram ou não re
     13: { 104: 'SIM', 501: 'Condições de trabalho ruins (assédio, insegurança).', 505: 'SIM' },
     14: { 104: 'SIM', 501: 'Condições de trabalho ruins (assédio, insegurança).', 505: 'NAO' },
     15: { 104: 'SIM', 501: 'Dúvidas sobre contrato ou direitos.' },
-    16: { 105: 'SIM', 601: 'Questões de saúde (SUS ou plano).', 602: 'Plano de Saúde' },
-    17: { 105: 'SIM', 601: 'Previdência e benefícios (INSS).', 603: 'SIM' },
-    18: { 105: 'SIM', 601: 'Previdência e benefícios (INSS).', 603: 'NAO' },
+    16: { 105: 'SIM', 601: 'Questões de saúde (negativa de atendimento no SUS, falta de remédio, problemas com o plano de saúde', 602: 'Plano de Saúde' },
+    17: { 105: 'SIM', 601: 'Previdência e benefícios do governo (aposentadoria, auxílio-doença, BPC/LOAS no INSS)..', 603: 'SIM' },
+    18: { 105: 'SIM', 601: 'Previdência e benefícios do governo (aposentadoria, auxílio-doença, BPC/LOAS no INSS)..', 603: 'NAO' },
     19: { 105: 'SIM', 601: 'Problemas com Banco ou Cartão de Crédito.', 604: 'SIM', 605: 'NAO'},
     20: { 101: 'SIM', 201: 'NAO' },
-    21: { 105: 'SIM', 601: 'Problemas com Banco ou Cartão de Crédito.', 604: 'NAO' }, };
+    21: { 105: 'SIM', 601: 'Problemas com Banco ou Cartão de Crédito.', 604: 'NAO' },
+    24: { 105: 'SIM', 601: 'Problemas com Banco ou Cartão de Crédito?', 604: 'SIM'}
+};
 for (const [entidadeId, caminho] of Object.entries(caminhos)) { popularRespostas(parseInt(entidadeId), caminho); }
 
 // --- ALGORITMOS (Estrutura Mantida, sem alterações) ---
