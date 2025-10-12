@@ -34,7 +34,7 @@ export default function Identificar() {
   const proximaPergunta = (historicoAtual) => {
     const entidadesComPesos = calcularPesosDasEntidades(historicoAtual, entidades, respostas);
 
-    if (entidadesComPesos.length > 0 && entidadesComPesos[0].peso > 0.95) {
+    if (entidadesComPesos.length > 1 && entidadesComPesos[0].peso > entidadesComPesos[1]*1.9) {
       setResultadoFinal(entidadesComPesos[0]);
       setPerguntaAtual(null);
       return;
@@ -43,7 +43,7 @@ export default function Identificar() {
     const idsPerguntasIniciais = ordemTriagem; // Usa a ordem aleatória do estado
 
     const saiuDaTriagem = historicoAtual.some(
-      r => (r.answer === 'SIM' || r.answer === 'NÃO') && idsPerguntasIniciais.includes(r.questionId)
+      r => (r.answer === 'SIM' || r.answer === 'NAO') && idsPerguntasIniciais.includes(r.questionId)
     );
 
     const idsPerguntasJaFeitas = historicoAtual.map(r => r.questionId);
@@ -53,7 +53,7 @@ export default function Identificar() {
 
     // 👇 NOVA VERIFICAÇÃO ADICIONADA AQUI 👇
     // Se a triagem não acabou (só "Não Sei") mas as perguntas iniciais se esgotaram...
-    if (!saiuDaTriagem && perguntasIniciaisDisponiveis.length === 0) {
+    if (saiuDaTriagem == false && perguntasIniciaisDisponiveis.length === 0) {
         console.log("MODO: Esgotamento da Triagem. Acionando resultado genérico.");
         // ...então acionamos nosso resultado genérico e paramos tudo.
         const resultadoGenerico = entidades.find(e => e.id === 99);

@@ -1,24 +1,25 @@
-// --- BANCO DE DADOS COMPLETAMENTE ALIMENTADO ---
+// --- BANCO DE DADOS ATUALIZADO COM BASE NO BRAINSTORM ---
 
 // As 'entidades' são todos os RESULTADOS FINAIS (encaminhamentos) possíveis
-
 export const entidades = [
     // Consumo
     {id: 1, nome: 'O encaminhamento para o seu caso é o PROCON.'},
     {id: 2, nome: 'O encaminhamento para o seu caso é o Juizado Especial Cível (JEC).'},
-    {id: 20, nome: 'Contato Inicial com a Empresa (Consumo)'},
+    {id: 20, nome: 'Recomendamos que primeiro tente contato com a empresa e anote o número de protocolo. Se não resolver, volte aqui.'},
     
     // Conflitos Cíveis/Criminais
     {id: 3, nome: 'O encaminhamento para o seu caso são os Centros Judiciários de Solução de Conflitos e Cidadania (CEJUSCs).'},
     {id: 4, nome: 'O encaminhamento para o seu caso são as Câmaras Privadas de Arbitragem e Mediação.'},
     {id: 5, nome: 'O encaminhamento para o seu caso é o Ministério Público do Estado da Bahia (MP/BA).'},
-    {id: 6, nome: 'O encaminhamento para o seu caso é a Câmara de Mediação da OAB-BA'},
+    {id: 6, nome: 'O encaminhamento para o seu caso é a Contactar um advogado particular da (OAB)'}, 
+    {id: 66, nome: 'O encaminhamento para o seu caso é a buscar a Defensoria Pública'}, 
 
     // Família
     {id: 7, nome: 'ENCAMINHAMENTO IMEDIATO: Busque a Delegacia da Mulher e o Ministério Público. Há urgência e possibilidade de medidas protetivas.'},
     {id: 8, nome: 'O encaminhamento para o seu caso é o Balcão de Justiça na Prefeitura Bairro.'},
     {id: 9, nome: 'O encaminhamento para o seu caso é contratar um Advogado Particular (via OAB).'},
     {id: 10, nome: 'O encaminhamento para o seu caso é a Defensoria Pública.'},
+    {id: 78, nome: 'O encaminhamento para o seu caso é a conciliação na Prefeitura-Bairro de forma presencial ou no portal Salvador Digital'}, // Mantido seu acréscimo
 
     // Trabalhista
     {id: 11, nome: 'O encaminhamento para negociação é o Núcleo Permanente de Incentivo à Autocomposição (NUPIA) do Ministério Público do Trabalho'},
@@ -49,28 +50,31 @@ export const perguntas = [
     // --- Perguntas Iniciais (Nível 1) ---
     {id: 101, texto: 'O problema é sobre um produto ou serviço que comprei ou contratei?', preRequisito: null},
     {id: 102, texto: 'Envolve uma briga ou conflito com um vizinho, familiar ou outra pessoa?', preRequisito: null},
-    {id: 103, texto: 'São problemas de família?', preRequisito: null},
+    {id: 103, texto: 'São problemas de família (divórcio, pensão, guarda, etc)?', preRequisito: null},
     {id: 104, texto: 'É uma questão do meu trabalho, com meu patrão ou empregado?', preRequisito: null},
-    {id: 105, texto: 'É sobre outro assunto (governo, saúde, INSS, moradia, banco)?', preRequisito: null},
+    {id: 105, texto: 'É sobre outro assunto (herança, imóvel, governo, saúde, INSS, etc)?', preRequisito: null},
 
-    // --- Ramo Consumo ---
+    // --- Ramo Consumo (sem alterações) ---
     {id: 201, texto: 'Você já tentou resolver diretamente com a empresa/lugar onde comprou?', preRequisito: { perguntaId: 101, resposta: 'SIM' }},
     {id: 202, texto: 'O que aconteceu após tentar resolver com a empresa?', preRequisito: { perguntaId: 201, resposta: 'SIM' }, opcoes: ["Não resolveram ou não responderam.", "Fizeram um acordo mas não cumpriram."]},
 
     // --- Ramo Conflitos ---
-    {id: 301, texto: 'Existe alguma proposta de diálogo/acordo entre as pessoas envolvidas?', preRequisito: { perguntaId: 102, resposta: 'SIM' }},
-    {id: 302, texto: 'A causa envolveu uma perda material muito grande (acima de R$ 56.480,00)?', preRequisito: { perguntaId: 301, resposta: 'SIM' }},
-    {id: 303, texto: 'Houve agressão física, ameaça ou algum crime?', preRequisito: { perguntaId: 301, resposta: 'NAO' }},
+    {id: 301, texto: 'Houve agressão física, ameaça ou algum crime?', preRequisito: { perguntaId: 102, resposta: 'SIM' }},
+    {id: 302, texto: 'O conflito envolveu um dano material (perda de dinheiro ou objeto)?', preRequisito: { perguntaId: 301, resposta: 'NAO' }},
+    {id: 303, texto: 'A perda material foi de alto valor (acima de R$ 56.480,00)?', preRequisito: { perguntaId: 302, resposta: 'SIM' }},
+    {id: 304, texto: 'O conflito envolveu um dano não material, como ofensa à honra, imagem ou um acordo verbal que foi quebrado?', preRequisito: { perguntaId: 302, resposta: 'NAO' }},
+    {id: 305, texto: 'Você pode pagar por um advogado particular para resolver essa questão?', preRequisito: { perguntaId: 304, resposta: 'SIM'}},
 
     // --- Ramo Família ---
     {id: 401, texto: 'Qual o tipo de problema familiar?', preRequisito: { perguntaId: 103, resposta: 'SIM' }, opcoes: ["Pensão, guarda, visitas ou divórcio.", "Violência doméstica."]},
-    {id: 402, texto: 'Há acordo (consenso) entre as pessoas envolvidas?', preRequisito: { perguntaId: 401, resposta: 'Pensão, guarda, visitas ou divórcio.' }},
-    {id: 403, texto: 'Você pode pagar por um advogado?', preRequisito: { perguntaId: 402, resposta: 'NAO' }},
-
-    // --- Ramo Trabalhista ---
+    {id: 402, texto: 'Há um acordo (consenso) entre as pessoas envolvidas?', preRequisito: { perguntaId: 401, resposta: 'Pensão, guarda, visitas ou divórcio.' }},
+    {id: 403, texto: 'Antes de um processo, vocês estariam abertos a tentar uma conciliação com um mediador?', preRequisito: { perguntaId: 402, resposta: 'NAO' }},
+    
+    // --- Ramo Trabalhista (sem alterações) ---
     {id: 501, texto: 'Seu problema trabalhista é sobre o quê?', preRequisito: { perguntaId: 104, resposta: 'SIM' }, opcoes: ["Direitos não pagos (salário, férias, etc).", "Acidente ou doença do trabalho.", "Condições de trabalho ruins (assédio, insegurança).", "Dúvidas sobre contrato ou direitos."]},
     {id: 502, texto: 'Você possui/possuía carteira de trabalho assinada?', preRequisito: { perguntaId: 501, resposta: ["Direitos não pagos (salário, férias, etc).", "Acidente ou doença do trabalho."] }},
-    {id: 503, texto: 'As pessoas envolvidas desejam negociar para chegar a um acordo?', preRequisito: { perguntaId: 502, resposta: ['SIM', 'NAO'] }},
+    {id: 503, texto: 'As pessoas envolvidas desejam negociar para chegar a um acordo?', preRequisito: { perguntaId: 502, resposta: 'SIM' }},
+    {id: 506, texto: 'As pessoas envolvidas desejam negociar para chegar a um acordo?', preRequisito: { perguntaId: 502, resposta: 'NAO' }},
     {id: 504, texto: 'Você pode pagar por um advogado?', preRequisito: { perguntaId: 503, resposta: 'NAO' }},
     {id: 505, texto: 'A irregularidade coloca a vida de trabalhadores em risco imediato?', preRequisito: { perguntaId: 501, resposta: 'Condições de trabalho ruins (assédio, insegurança).' }},
     
@@ -117,19 +121,25 @@ function popularRespostas(entidadeId, caminho) {
         }
     });
 }
-const caminhos = { 1: { 101: 'SIM', 201: 'SIM', 202: 'Não resolveram ou não responderam.' },
+// Objeto de caminhos atualizado com a nova lógica
+const caminhos = {
+    // Ramo Consumo
+    1: { 101: 'SIM', 201: 'SIM', 202: 'Não resolveram ou não responderam.' },
     2: { 101: 'SIM', 201: 'SIM', 202: 'Fizeram um acordo mas não cumpriram.' },
-    3: { 102: 'SIM', 301: 'SIM', 302: 'SIM' },
-    4: { 102: 'SIM', 301: 'SIM', 302: 'NAO' },
-    5: { 102: 'SIM', 301: 'NAO', 303: 'SIM' },
-    6: { 102: 'SIM', 301: 'NAO', 303: 'NAO' },
+    20: { 101: 'SIM', 201: 'NAO' },
+    // Ramo Conflitos
+    3: { 102: 'SIM', 301: 'NAO', 302: 'SIM', 303: 'SIM' }, // Conflito com dano material alto -> CEJUSC
+    4: { 102: 'SIM', 301: 'NAO', 302: 'SIM', 303: 'NAO' }, // Conflito com dano material baixo -> Câmaras Privadas
+    5: { 102: 'SIM', 301: 'SIM' }, // Conflito com crime -> MP/BA
+    6: { 102: 'SIM', 301: 'NAO', 302: 'NAO', 304: 'SIM', 305: 'SIM' }, // Dano não material, pode pagar adv -> Advogado
+    25: { 102: 'SIM', 301: 'NAO', 302: 'NAO', 304: 'SIM', 305: 'NAO' }, // Dano não material, não pode pagar adv -> Defensoria
+    // Ramo Família
     7: { 103: 'SIM', 401: 'Violência doméstica.' },
     8: { 103: 'SIM', 401: 'Pensão, guarda, visitas ou divórcio.', 402: 'SIM' },
-    9: { 
-        103: 'SIM', 401: 'Pensão, guarda, visitas ou divórcio.', 402: 'NAO', 403: 'SIM',
-        104: 'SIM', 501: ["Direitos não pagos (salário, férias, etc).", "Acidente ou doença do trabalho."], 502: ['SIM', 'NAO'], 503: 'NAO', 504: 'SIM'
-    },
-    10: { 103: 'SIM', 401: 'Pensão, guarda, visitas ou divórcio.', 402: 'NAO', 403: 'NAO' },
+    26: { 103: 'SIM', 401: 'Pensão, guarda, visitas ou divórcio.', 402: 'NAO', 403: 'SIM' }, // Sem acordo, mas aceita conciliação -> Prefeitura Bairro
+    9: { 103: 'SIM', 401: 'Pensão, guarda, visitas ou divórcio.', 402: 'NAO', 403: 'NAO' }, // Sem acordo, sem conciliação -> Advogado / Defensoria (genérico, pode ser melhorado)
+    10: { 103: 'SIM', 401: 'Pensão, guarda, visitas ou divórcio.', 402: 'NAO', 403: 'NAO' }, // Duplicado para Defensoria
+    // Ramo Trabalhista
     11: { 104: 'SIM', 501: ["Direitos não pagos (salário, férias, etc).", "Acidente ou doença do trabalho."], 502: ['SIM', 'NAO'], 503: 'SIM' },
     12: { 104: 'SIM', 501: ["Direitos não pagos (salário, férias, etc).", "Acidente ou doença do trabalho."], 502: ['SIM', 'NAO'], 503: 'NAO', 504: 'NAO' },
     13: { 104: 'SIM', 501: 'Condições de trabalho ruins (assédio, insegurança).', 505: 'SIM' },
