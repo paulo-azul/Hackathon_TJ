@@ -33,6 +33,12 @@ export const entidades = [
     {id: 18, nome: 'Você precisa aguardar a decisão oficial ou entrar com um recurso administrativo no próprio INSS.'},
     {id: 19, nome: 'Se o PROCON não resolveu, registre uma reclamação no Banco Central e procure a mediação na câmara da OAB.'},
     {id: 21, nome: 'Primeiro, contate o atendimento ao cliente do seu banco e anote o protocolo.'},
+    {id: 22, nome: 'Encaminhamento: Ministério Público ou Defensoria Pública. (Ambos podem entrar com uma ação para garantir seu direito)'},
+    {id: 23, nome: 'Esse é um bom primeiro passo e pode resolver mais rápido. Procure a Ouvidoria e o conselho de saúde '},
+    {id: 24, nome: 'Realizar um reclamação Inicial pela NIP (notificação de intermediação preliminar no portal da ANS-link) quem resolve isso depois é a ANS de forma administrativa e eles encaminham para o processo, se necessário  '},
+    {id: 25, nome: 'Ligar para a operadora, se não resolver, encaminhar para a resposta sim  '},
+    {id: 26, nome: 'Você precisa aguardar a decisão oficial ou entrar com um recurso administrativo(pedido para olhar novamente a decisão) no próprio INSS- por meio do Conselho de recursos da previdência social'},
+    
     {id: 99, nome: 'Não foi possível determinar um encaminhamento específico com as informações fornecidas. Recomendamos que você procure a Defensoria Pública para uma orientação detalhada sobre o seu caso.'}
 ];
 
@@ -67,11 +73,33 @@ export const perguntas = [
     {id: 505, texto: 'A irregularidade coloca a vida de trabalhadores em risco imediato?', preRequisito: { perguntaId: 501, resposta: 'Condições de trabalho ruins (assédio, insegurança).' }},
     
     // --- Ramo Outros ---
-    {id: 601, texto: 'Seu problema se encaixa em qual categoria?', preRequisito: { perguntaId: 105, resposta: 'SIM' }, opcoes: ["Questões de saúde (SUS ou plano).", "Previdência e benefícios (INSS).", "Problemas com Banco ou Cartão de Crédito."]},
-    {id: 602, texto: 'O problema é com o SUS ou com um Plano de Saúde?', preRequisito: { perguntaId: 601, resposta: 'Questões de saúde (SUS ou plano).' }},
-    {id: 603, texto: 'O INSS já deu uma resposta oficial negando seu pedido?', preRequisito: { perguntaId: 601, resposta: 'Previdência e benefícios (INSS).' }},
-    {id: 604, texto: 'Você já fez uma reclamação inicial no banco?', preRequisito: { perguntaId: 601, resposta: 'Problemas com Banco ou Cartão de Crédito.' }},
+    {id: 601, texto: 'Seu problema se encaixa em qual categoria?', preRequisito: { perguntaId: 105, resposta: 'SIM' }, opcoes: ["Um problema com o governo ou um serviço público (água, luz, IPTU, multas).","Questões de saúde (negativa de atendimento no SUS, falta de remédio, problemas com o plano de saúde)","Previdência e benefícios do governo (aposentadoria, auxílio-doença, BPC/LOAS no INSS).", "Previdência e benefícios do governo (aposentadoria, auxílio-doença, BPC/LOAS no INSS).", "Problemas com Banco ou Cartão de Crédito?", "Nenhuma dessas opções."]},
+    {id: 602, texto: 'O problema é com o SUS ou com um Plano de Saúde?', preRequisito: { perguntaId: 601, resposta: 'Questões de saúde (negativa de atendimento no SUS, falta de remédio, problemas com o plano de saúde) ' }},
+    {id: 603, texto: 'O INSS já deu uma resposta oficial negando seu pedido?', preRequisito: { perguntaId: 601, resposta: 'Previdência e benefícios do governo (aposentadoria, auxílio-doença, BPC/LOAS no INSS).' }},
+    {id: 604, texto: 'Você já fez uma reclamação inicial no banco?', preRequisito: { perguntaId: 601, resposta: 'Problemas com Banco ou Cartão de Crédito?' }},
     {id: 605, texto: 'Após reclamar no banco, você foi ao PROCON e o problema foi resolvido?', preRequisito: { perguntaId: 604, resposta: 'SIM' }},
+    //Se a resposta for A
+    {id: 606, texto: 'Seu problema é relacionado a um concurso?', preRequisito: {perguntaId: 601, resposta: 'Um problema com o gorveno ou um serviço público (água,luz,IPTU,multas)'}},
+    {id: 607, texto: 'Enviar um requerimento no site da banca examinadora ou ligar para o SAC da organizadora (como FGV, IBFC, CESPE/CEBRASPE, IDECAN.)', preRequisito: {perguntaId: 606, resposta: 'SIM'}},
+    {id: 608, texto: 'Seu problema está relacionado com o trânsito', preRequisito: {perguntaId: 606, resposta: 'NAO'}},
+    {id: 609, texto: 'Acessar os órgãos como JARI e CETRAN( consultar o site do gov.br na área de serviços detran ) . Em caso de valores muito altos de multa ou algo relacionado buscar o Juizado Especial. ', preRequisito: {perguntaId: 608, resposta: 'SIM'}},
+    {id: 610, texto: 'Seu problema é com algum serviço público? IPTU, IPVA - SEFAZ( pagamentos, atrasos, falhas na comunicação e emissão )', preRequisito: {perguntaId: 608, resposta: 'NAO'}},
+    {id: 611, texto: 'Você pode pagar por um advogado', preRequisito: {perguntaId: 610, resposta: 'SIM'}},
+    {id: 612, texto: 'Encaminhamento: Contratar um Advogado Particular (OAB).', preRequisito: {perguntaId: 611, resposta: 'SIM'}},
+    {id: 613, texto: 'Encaminhamento: Defensoria Pública', preRequisito: {perguntaId: 611, resposta: 'NAO'}},
+    //Se a resposta for B
+    {id: 621, texto: 'É pelo SUS?', preRequisito: { perguntaId: 602, resposta: 'SIM' }},
+    {id: 622, texto: 'Você já tentou a Ouvidoria do SUS ou a Secretaria de Saúde do seu município/estado?', preRequisito: { perguntaId: 621, resposta: 'SIM' }},
+    {id: 623, texto: 'Sim, e não resolveu', preRequisito: { perguntaId: 622, resposta: 'SIM' }},
+    {id: 624, texto: 'Tem número de protocolo com o plano?', preRequisito: { perguntaId: 621, resposta: 'NAO' }},
+    //Se a resposta for C
+    {id: 625, texto: 'Você pode pagar por um advogado?', preRequisito: { perguntaId: 603, resposta: 'SIM' }},
+    //Se a resposta for E
+    {id: 626, texto: 'Ir para o PROCON', preRequisito: { perguntaId: 604, resposta: 'SIM' }},
+    {id: 627, texto: 'O PROCON resolveu o seu problema?', preRequisito: { perguntaId: 626, resposta: 'SIM' }},
+    {id: 628, texto: 'Tem número de protocolo com o plano?', preRequisito: { perguntaId: 621, resposta: 'NAO' }},
+    {id: 629, texto: 'Tem número de protocolo com o plano?', preRequisito: { perguntaId: 621, resposta: 'NAO' }},
+
 ];
 
 export const respostas = [];
