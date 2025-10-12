@@ -43,7 +43,7 @@ export default function Identificar() {
     const idsPerguntasIniciais = ordemTriagem; // Usa a ordem aleatória do estado
 
     const saiuDaTriagem = historicoAtual.some(
-      r => (r.answer === 'SIM' || r.answer === 'NAO') && idsPerguntasIniciais.includes(r.questionId)
+      r => r.answer === 'SIM' && idsPerguntasIniciais.includes(r.questionId)
     );
 
     const idsPerguntasJaFeitas = historicoAtual.map(r => r.questionId);
@@ -51,43 +51,50 @@ export default function Identificar() {
 
     let melhorPergunta;
 
-    // 👇 NOVA VERIFICAÇÃO ADICIONADA AQUI 👇
-    // Se a triagem não acabou (só "Não Sei") mas as perguntas iniciais se esgotaram...
-    if (saiuDaTriagem == false && perguntasIniciaisDisponiveis.length === 0) {
-        console.log("MODO: Esgotamento da Triagem. Acionando resultado genérico.");
-        // ...então acionamos nosso resultado genérico e paramos tudo.
-        const resultadoGenerico = entidades.find(e => e.id === 99);
-        setResultadoFinal(resultadoGenerico);
-        setPerguntaAtual(null);
-        return; // IMPORTANTE: Encerra a função aqui.
-    }
-    // --- FIM DA NOVA VERIFICAÇÃO ---
-
+   // --- LÓGICA DE SELEÇÃO DE PERGUNTAS ALTERADA ---
+   // --COMMIT INCIO--
+    // Se a triagem principal AINDA NÃO ACABOU (nenhum "SIM") e AINDA HÁ perguntas iniciais para fazer...
     if (!saiuDaTriagem && perguntasIniciaisDisponiveis.length > 0) {
-      console.log("MODO: Triagem Persistente. Próxima pergunta disponível:", perguntasIniciaisDisponiveis[0]);
+      console.log("MODO: Triagem Principal. Próxima pergunta disponível:", perguntasIniciaisDisponiveis[0]);
       const proximoId = perguntasIniciaisDisponiveis[0]; 
       melhorPergunta = perguntas.find(p => p.id === proximoId);
-    } 
+    }
+    // Se a triagem principal JÁ ACABOU (todas as 4 foram respondidas com "NÃO"), e a pergunta 105 AINDA NÃO FOI FEITA...
+    else if (!saiuDaTriagem && perguntasIniciaisDisponiveis.length === 0 && !idsPerguntasJaFeitas.includes(105)) {
+        console.log("MODO: Triagem Final. Apresentando a pergunta 'Outros'.");
+        melhorPergunta = perguntas.find(p => p.id === 105);
+    }
+    // Em todos os outros casos (ou a triagem terminou com "SIM", ou todas as 5 perguntas iniciais já foram feitas)...
     else {
       console.log("MODO: Aprofundamento Inteligente.");
       const candidatos = entidadesComPesos.filter(e => e.peso > 0.001);
+      //--COMMIT INICIO 2--
+      const idsDeTodasAsPerguntasIniciais = [101, 102, 103, 104, 105];
+      const perguntasParaEscolha = saiuDaTriagem 
+        ? perguntas.filter(p => !idsDeTodasAsPerguntasIniciais.includes(p.id)) 
+        : perguntas;
+
       melhorPergunta = escolherMelhorPergunta(
           candidatos, 
           idsPerguntasJaFeitas, 
-          perguntas, 
+          perguntasParaEscolha, // Usamos a lista agora corretamente filtrada
           respostas, 
           historicoAtual
       );
+      //--COMMIT FIM 2--
     }
     
+    // Se, após toda a lógica, não houver uma próxima pergunta clara, o sistema apresenta o melhor candidato ou um resultado genérico.
     if (melhorPergunta) {
       setPerguntaAtual(melhorPergunta);
     } else {
-      setResultadoFinal(entidadesComPesos[0]);
+      // Se não há mais perguntas a fazer, define o resultado final como o mais provável.
+      const melhorResultado = entidadesComPesos[0] || entidades.find(e => e.id === 99);
+      setResultadoFinal(melhorResultado);
       setPerguntaAtual(null);
     }
 };
-
+//--COMMIT FIM--
   useEffect(() => {
     proximaPergunta(historico);
 }, [historico]);
