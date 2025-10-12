@@ -4,8 +4,8 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  padding: 8rem 2rem 2rem 2rem; /* Adiciona mais padding no topo para o header fixo */
-  background-color: #f8f9fa; /* Fundo cinza claro */
+  padding: 8rem 2rem 2rem 2rem; 
+  background-color: #f8f9fa; 
 }
 
 .container {
@@ -84,19 +84,18 @@
 
 .accordionContainer {
   width: 100%;
-  max-width: 800px; /* Largura máxima do container */
+  max-width: 800px; 
   background-color: #ffffff;
   border: 1px solid #e2e8f0;
   border-radius: 12px;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
-  overflow: hidden; /* Garante que os cantos arredondados sejam aplicados nos filhos */
+  overflow: hidden; 
 }
 
 .faqItem {
   border-bottom: 1px solid #e2e8f0;
 }
 
-/* Remove a borda do último item */
 .faqItem:last-child {
   border-bottom: none;
 }
@@ -121,7 +120,7 @@
 
 .icon {
   transition: transform 0.3s ease;
-  flex-shrink: 0; /* Impede que o ícone seja espremido */
+  flex-shrink: 0; 
   margin-left: 16px;
 }
 
@@ -137,7 +136,7 @@
 }
 
 .answer.answerOpen {
-  max-height: 200px; /* Um valor alto o suficiente para caber o conteúdo */
+  max-height: 200px; 
   padding: 0 24px 20px 24px;
   transition: max-height 0.4s ease-in, padding 0.4s ease-in;
 }
@@ -150,14 +149,14 @@
 
 .ctaSection {
   display: flex;
-  gap: 2rem; /* Espaçamento entre os cards */
+  gap: 2rem; 
   width: 100%;
   max-width: 800px;
-  margin-top: 4rem; /* Espaço acima da seção */
+  margin-top: 4rem; 
 }
 
 .ctaCard {
-  flex: 1; /* Faz com que os dois cards ocupem o mesmo espaço */
+  flex: 1; 
   background-color: #fff;
   border: 1px solid #e2e8f0;
   border-radius: 12px;
@@ -184,7 +183,7 @@
 .ctaText {
   color: #718096;
   margin-bottom: 1.5rem;
-  min-height: 48px; /* Garante alinhamento mesmo com textos de tamanhos diferentes */
+  min-height: 48px; 
 }
 
 .ctaButton {
@@ -198,7 +197,7 @@
 }
 
 .primary {
-  background-color: #0d3d6f; /* Azul escuro */
+  background-color: #0d3d6f; 
   color: #fff;
   border: 1px solid #0d3d6f;
 }
@@ -218,7 +217,7 @@
   border-color: #a0aec0;
 }
 
-/* Deixa os cards um embaixo do outro em telas pequenas */
+
 @media (max-width: 768px) {
   .ctaSection {
     flex-direction: column;

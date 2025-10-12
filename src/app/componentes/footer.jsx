@@ -1,4 +1,4 @@
-import styles from '../Duvidas/page.module.css';
+import styles from './page.module.css';
 
 const Footer = () => {
   return (

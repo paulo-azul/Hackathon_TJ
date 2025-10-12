@@ -1,8 +1,7 @@
 'use client'; // Necessário para usar hooks como o useState
 
 import { useState } from 'react';
-import styles from '../Duvidas/page.module.css';
-//import styles from '../Duvidas/Pagina.css'; // Importando os estilos
+import styles from './page.module.css';
 
 // Dados das perguntas e respostas
 const faqData = [

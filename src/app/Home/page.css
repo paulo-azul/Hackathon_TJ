@@ -220,15 +220,11 @@
 
 @media (max-width: 768px) {
 
-    
     .header_pag {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
+        flex-direction: column;
         gap: 10px;
-        padding: 10px 15px;
+        padding: 10px;
     }
-    
     
     .pag_inicio {
         height: auto;
@@ -236,7 +232,6 @@
         text-align: center;
     }
     
-
     .pag_inicio_txt_ini {
         width: 90%; 
         font-size: 16px;
@@ -276,7 +271,6 @@
         font-size: 16px;
     }
 
-    
     .necessidade_jurd {
         width: 90vw; 
         height: auto; 

@@ -1,7 +1,7 @@
 import Link from 'next/link';
-import { BsChatQuote } from 'react-icons/bs'; // Ícone de chat
-import { FiMail } from 'react-icons/fi'; // Ícone de e-mail
-import styles from '../Duvidas/page.module.css';
+import { BsChatQuote } from 'react-icons/bs'; 
+import { FiMail } from 'react-icons/fi'; 
+import styles from './page.module.css';
 
 const CallToAction = () => {
   return (
