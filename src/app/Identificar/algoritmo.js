@@ -147,8 +147,8 @@ const caminhos = {
     7: { 103: 'SIM', 401: 'Violência doméstica.' },
     8: { 103: 'SIM', 401: 'Pensão, guarda, visitas ou divórcio.', 402: 'SIM' },
     26: { 103: 'SIM', 401: 'Pensão, guarda, visitas ou divórcio.', 402: 'NAO', 403: 'SIM' }, // Sem acordo, mas aceita conciliação -> Prefeitura Bairro
-    9: { 103: 'SIM', 401: 'Pensão, guarda, visitas ou divórcio.', 402: 'NAO', 403: 'NAO' }, // Sem acordo, sem conciliação -> Advogado / Defensoria (genérico, pode ser melhorado)
-    10: { 103: 'SIM', 401: 'Pensão, guarda, visitas ou divórcio.', 402: 'NAO', 403: 'NAO' }, // Duplicado para Defensoria
+    9: { 103: 'SIM', 401: 'Pensão, guarda, visitas ou divórcio.', 402: 'NAO', 403: 'NAO', 611:'SIM' }, // Sem acordo, sem conciliação -> Advogado / Defensoria (genérico, pode ser melhorado)
+    10: { 103: 'SIM', 401: 'Pensão, guarda, visitas ou divórcio.', 402: 'NAO', 403: 'NAO', 611:'NAO' }, // Duplicado para Defensoria
     // Ramo Trabalhista
     11: { 104: 'SIM', 501: ["Direitos não pagos (salário, férias, etc).", "Acidente ou doença do trabalho."], 502: ['SIM', 'NAO'], 503: 'SIM' },
     12: { 104: 'SIM', 501: ["Direitos não pagos (salário, férias, etc).", "Acidente ou doença do trabalho."], 502: ['SIM', 'NAO'], 503: 'NAO', 504: 'NAO' },
@@ -174,7 +174,8 @@ const caminhos = {
     36: { 105: 'SIM', 601: 'Previdência e benefícios do governo (aposentadoria, auxílio-doença, BPC/LOAS no INSS).', 603: 'NAO'},
     37: { 105: 'SIM', 601: 'Problemas com Banco ou Cartão de Crédito?', 604: 'SIM', 629: 'NAO'},
     38: { 105: 'SIM', 601: 'Problemas com Banco ou Cartão de Crédito?', 604: 'SIM', 629: 'SIM'},
-    39: { 105: 'SIM', 601: 'Problemas com Banco ou Cartão de Crédito?', 604: 'NAO',}
+    39: { 105: 'SIM', 601: 'Problemas com Banco ou Cartão de Crédito?', 604: 'NAO',},
+    99: { 101: 'NAO SEI', 102: 'NAO SEI', 103: 'NAO SEI', 104: 'NAO SEI'}
 
 };
 for (const [entidadeId, caminho] of Object.entries(caminhos)) { popularRespostas(parseInt(entidadeId), caminho); }
