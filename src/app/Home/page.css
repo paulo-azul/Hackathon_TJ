@@ -2,7 +2,7 @@
     overflow-x: hidden;
 }
 
-.header_pag1{
+.header_pag11{
     background-color: white;
     display: flex;
     flex-direction: row;
@@ -18,7 +18,7 @@
     box-shadow: 0px 12px 24px -23px rgba(3, 2, 19, 0.25);
 }
 
-.header_pag1.scrolled {
+.header_pag11.scrolled1 {
     background-color: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(10px); 
@@ -26,18 +26,18 @@
 }
 
 
-.div_icone{
+.div_icone1{
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 5px;
 }
 
-.img_icone{
+.img_icone1{
     width: 35px;
 }
 
-.links_header{
+.links_header1{
     display: flex;
     flex-direction: row;
     color: gray;
@@ -45,11 +45,11 @@
     align-items: center;
 }
 
-.p{
+.p1{
     color: black;
 }
 
-.pag_inicio{
+.pag_inicio1{
     background-color: rgb(247, 247, 247);
     color: black;
     width: 100%; 
@@ -60,7 +60,7 @@
     align-items: center;
 }
 
-.div_icone_incio{
+.div_icone_incio1{
     display: flex;
     flex-direction: row;
     gap: 10px;
@@ -75,12 +75,12 @@
     overflow: hidden;
 }
 
-.img_balança_ini{
+.img_balança_ini1{
     width: 18px;
     height: 18px;
 }
 
-.pag_inicio_txt_ini{
+.pag_inicio_txt_ini1{
     padding-top: 35px;
     align-items: center;
     display: flex;
@@ -92,13 +92,13 @@
     font-size: 18px;
 }
 
-.pag_inicio_txt_ini_tit{
+.pag_inicio_txt_ini_tit1{
     color: black;
     font-weight: bold;
     font-size: 20px;
 }
 
-.div_links_paginitxt{
+.div_links_paginitxt1{
     display: flex;
     flex-direction: row;
     gap: 60px;
@@ -107,7 +107,7 @@
     align-items: center;
 }
 
-.linkazul{
+.linkazul1{
     background-color: #003366;
     color: white;
     padding: 10px;
@@ -115,11 +115,11 @@
     border-radius: 10px;
 }
 
-.linkazul:hover{
+.linkazul1:hover{
     filter: brightness(1.2)
 }
 
-.div_como_funciona{
+.div_como_funciona1{
     padding-top: 60px;
     position: relative;
     display: flex;
@@ -131,20 +131,20 @@
     font-weight:400;
 }
 
-.desc_como_func{
+.desc_como_func1{
     color: #6b7280;
     font-size: 18px;
     padding-bottom: 40px;
 }
 
-.com_funcss_div{
+.com_funcss_div1{
     display: flex;
     flex-direction: row;
     gap: 20px;
     padding-bottom: 60px;
 }
 
-.div_areas{
+.div_areas1{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -154,7 +154,7 @@
     gap: 20px;
 }
 
-.areas_txt{
+.areas_txt1{
     padding-bottom: 20px;
     text-align: center;
     display: flex;
@@ -162,16 +162,16 @@
     gap: 10px;
 }
 
-.tit_areas{
+.tit_areas1{
     font-size: 23px;
 }
 
-.desc_areas{
+.desc_areas1{
     color: #6b7280;
     font-size: 18px;
 }
 
-.comp_areas{
+.comp_areas1{
     display: flex;
     flex-direction: row;
     gap: 20px;
@@ -179,14 +179,14 @@
     overflow:visible;
 }
 
-.area_final{
+.area_final1{
     background-color: white;
     padding-bottom: 300px;
     color: white;
     justify-items: center;
 }
 
-.necessidade_jurd{
+.necessidade_jurd1{
     padding-top: 30px;
     position: relative;
     top: 140;
@@ -201,7 +201,7 @@
     border-radius: 10px;
 }
 
-.linkamarelo{
+.linkamarelo1{
     background-color: #FFB81C;
     color: black;
     padding: 10px;
@@ -210,76 +210,76 @@
     padding-right: 18px;
 }
 
-.linkamarelo:hover{
+.linkamarelo1:hover{
     filter: brightness(0.9)
 }
 
-.lnk:hover{
+.lnk1:hover{
     color: black;
 }
 
 @media (max-width: 768px) {
 
-    .header_pag {
+    .header_pag11 {
         flex-direction: row; 
         justify-content: space-between; 
         align-items: center; 
         padding: 10px 15px; 
     }
     
-    .pag_inicio {
+    .pag_inicio1 {
         height: auto;
         padding: 120px 20px 40px 20px; 
         text-align: center;
     }
     
-    .pag_inicio_txt_ini {
+    .pag_inicio_txt_ini1 {
         width: 90%; 
         font-size: 16px;
     }
 
-    .pag_inicio_txt_ini_tit {
+    .pag_inicio_txt_ini_tit1 {
         font-size: 20px; 
     }
 
-    .div_links_paginitxt {
+    .div_links_paginitxt1 {
         flex-direction: column;
         gap: 20px;
         width: 100%;
     }
 
-    .linkazul {
+    .linkazul1 {
         width: 80%;
         text-align: center;
     }
     
-    .div_como_funciona, .div_areas {
+    .div_como_funciona1, .div_areas1 {
         padding-left: 15px;
         padding-right: 15px;
     }
 
-    .com_funcss_div, .comp_areas {
+    .com_funcss_div1, .comp_areas1 {
         flex-direction: column;
         align-items: center;
         gap: 30px;
     }
 
-    .tit_areas, .div_como_funciona {
+    .tit_areas1, .div_como_funciona1 {
         font-size: 20px;
     }
 
-    .desc_areas, .desc_como_func {
+    .desc_areas1, .desc_como_func1 {
         font-size: 16px;
     }
 
-    .necessidade_jurd {
+    .necessidade_jurd1 {
         width: 90vw; 
         height: auto; 
         padding: 30px 15px;
         top: 100px;
     }
 
-    .area_final {
+    .area_final1 {
         padding-bottom: 150px; 
     }
 }

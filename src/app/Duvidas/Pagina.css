@@ -1,4 +1,4 @@
-.header_pag3{
+.header_pag33{
     background-color: white;
     display: flex;
     flex-direction: row;
@@ -14,9 +14,7 @@
     box-shadow: 0px 12px 24px -23px rgba(3, 2, 19, 0.25);
 }
 
-
-
-.header_pag3.scrolled {
+.header_pag33.scrolled3 {
     background-color: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(10px); 
@@ -24,18 +22,18 @@
 }
 
 
-.div_icone{
+.div_icone3{
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 5px;
 }
 
-.img_icone{
+.img_icone3{
     width: 35px;
 }
 
-.links_header{
+.links_header3{
     display: flex;
     flex-direction: row;
     color: gray;
@@ -43,11 +41,11 @@
     align-items: center;
 }
 
-.p{
+.p3{
     color: black;
 }
 
-.pag_inicio{
+.pag_inicio3{
     background-color: rgb(239, 238, 238);
     height: 100vh;
 }

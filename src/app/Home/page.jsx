@@ -58,16 +58,16 @@ export default function Home() {
 
   return (
     <div>
-      <header id="main-header" className={`header_pag1 ${isScrolled ? 'scrolled' : ''}`}>
-        <div className="div_icone">
-          <Image src={icone_principal} alt="logo JurisConsultor" className="img_icone"></Image>
+      <header id="main-header" className={`header_pag11 ${isScrolled ? 'scrolled1' : ''}`}>
+        <div className="div_icone1">
+          <Image src={icone_principal} alt="logo JurisConsultor" className="img_icone1"></Image>
           <h1>JurisConsultor</h1>
         </div>
         {isClient && !isMobile && (
-          <div className="links_header">
-            <p className="p">Início</p>
-            <Link  href="/Identificar" className="lnk">Identificar Necessidades</Link>
-            <Link  href="/Duvidas" className="lnk">Dúvidas frequentes</Link> 
+          <div className="links_header1">
+            <p className="p1">Início</p>
+            <Link  href="/Identificar" className="lnk1">Identificar Necessidades</Link>
+            <Link  href="/Duvidas" className="lnk1">Dúvidas frequentes</Link> 
           </div>
         )}
         {isClient && isMobile && (
@@ -76,24 +76,24 @@ export default function Home() {
             </>
           )}
       </header>
-      <div className="pag_inicio">
-        <div className="div_icone_incio">
-          <Image src={balança} alt="Icone balança" className="img_balança_ini" ></Image>
+      <div className="pag_inicio1">
+        <div className="div_icone_incio1">
+          <Image src={balança} alt="Icone balança" className="img_balança_ini1" ></Image>
           <h1>Orientação Jurídica Inteligente</h1>
         </div>
-        <div className="pag_inicio_txt_ini">
-          <h1 className="pag_inicio_txt_ini_tit">Descubra como resolver seus problemas jurídicos</h1>
-          <p className="pag_inicio_txt_ini_tit_p">Responda algumas perguntas e nosso sistema inteligente identificará qual sua necessidade jurídica e como você pode resolver seu problema.</p>
-          <div className="div_links_paginitxt">
-            <Link href="/Identificar" className="linkazul" >Começar agora</Link>
-            <Link href="/Duvidas" className="linkn">Dúvidas frequentes</Link> 
+        <div className="pag_inicio_txt_ini1">
+          <h1 className="pag_inicio_txt_ini_tit1">Descubra como resolver seus problemas jurídicos</h1>
+          <p className="pag_inicio_txt_ini_tit_p1">Responda algumas perguntas e nosso sistema inteligente identificará qual sua necessidade jurídica e como você pode resolver seu problema.</p>
+          <div className="div_links_paginitxt1">
+            <Link href="/Identificar" className="linkazul1" >Começar agora</Link>
+            <Link href="/Duvidas" className="linkn1">Dúvidas frequentes</Link> 
           </div>
         </div>
       </div>
-      <div className="div_como_funciona">
+      <div className="div_como_funciona1">
           <h1>Como funciona</h1>
-          <h2 className="desc_como_func">Nossa ferramenta simplifica o processo de encontrar a orientação jurídica adequada pra você</h2>
-          <div className="com_funcss_div">
+          <h2 className="desc_como_func1">Nossa ferramenta simplifica o processo de encontrar a orientação jurídica adequada pra você</h2>
+          <div className="com_funcss_div1">
             <Funciona 
                     img_src={icone_chat}
                     img_alt="Ícone representando a conversa entre o sistema e a pessoa"
@@ -114,12 +114,12 @@ export default function Home() {
                   />
           </div>
         </div>
-        <div className="div_areas">
-          <div className="areas_txt">
-            <h1 className="tit_areas">Áreas Cobertas</h1>
-            <p className="desc_areas">Identificamos necessidades nas principais áreas do direito</p>
+        <div className="div_areas1">
+          <div className="areas_txt1">
+            <h1 className="tit_areas1">Áreas Cobertas</h1>
+            <p className="desc_areas1">Identificamos necessidades nas principais áreas do direito</p>
           </div>
-          <div className="comp_areas">
+          <div className="comp_areas1">
             <Area
                     img_src={trabalho}
                     img_alt="Ícone representando o direito trabalhista"
@@ -142,11 +142,11 @@ export default function Home() {
                   />
           </div>
         </div>
-        <div className="area_final">
-          <div className="necessidade_jurd">
+        <div className="area_final1">
+          <div className="necessidade_jurd1">
             <h1>Pronto para descobrir sua necessidade jurídica?</h1>
             <h1>Nosso sistema de perguntas levará apenas alguns minutos</h1>
-            <Link href="/Identificar" className="linkamarelo" >Inicar Identificação</Link>
+            <Link href="/Identificar" className="linkamarelo1" >Inicar Identificação</Link>
           </div>
         </div>
 

@@ -13,7 +13,6 @@ import CallToAction from '../componentes/cartoes';
 import Footer from '../componentes/footer';
 
 export default function Duvida() {
-  // --- TODOS OS HOOKS DEVEM FICAR AQUI NO TOPO ---
   const [isClient, setIsClient] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const largura = useTela();
@@ -23,8 +22,6 @@ export default function Duvida() {
   }, []);
   
   useEffect(() => {
-    // É seguro adicionar o listener mesmo se `largura` for null.
-    // O `window` existe no cliente independentemente do estado.
     const handleScroll = () => {
       if (window.scrollY > 10) {
         setIsScrolled(true);
@@ -38,29 +35,28 @@ export default function Duvida() {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []); // O array vazio aqui está correto, pois o efeito não depende de props/estado.
+  }, []); 
 
-  // Agora a condição de retorno pode vir depois dos hooks, sem problemas.
+
   if (largura === null) {
     return null; 
   }
   
-  // A lógica que depende da `largura` vem depois da verificação.
   const isMobile = largura < 768;
 
   return (
     <>
-      <header id="main-header" className={`header_pag3 ${isScrolled ? 'scrolled' : ''}`}>
-        <div className="div_icone">
-          <Image src={icone_principal} alt="logo JurisConsultor" className="img_icone" />
+      <header id="main-header" className={`header_pag33 ${isScrolled ? 'scrolled3' : ''}`}>
+        <div className="div_icone3">
+          <Image src={icone_principal} alt="logo JurisConsultor" className="img_icone3" />
           <h1>JurisConsultor</h1>
         </div>
         
         {isClient && !isMobile && (
-          <div className="links_header">
+          <div className="links_header3">
             <Link href="./">Início</Link>
             <Link href="./Identificar">Identificar Necessidades</Link>
-            <p className='p'>Dúvidas frequentes</p>
+            <p className='p3'>Dúvidas frequentes</p>
           </div>
         )}
         {isClient && isMobile && (

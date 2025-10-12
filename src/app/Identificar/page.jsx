@@ -8,6 +8,7 @@ import { useState, useEffect } from 'react';
 import useTela from '../componentes/Tela.jsx';
 import NavbarMobile from '../componentes/Navbar_mobile.jsx';
 import balanca from '../img/icone_balança_redonda.png'
+import Footer from '../componentes/footer';
 
 export default function Identificar() {
 
@@ -41,15 +42,15 @@ export default function Identificar() {
   return (
     <div>
 
-      <header id="main-header" className={`header_pag2 ${isScrolled ? 'scrolled' : ''}`}>
-        <div className="div_icone">
-          <Image src={icone_principal} alt="logo JurisConsultor" className="img_icone"></Image>
+      <header id="main-header" className={`header_pag22 ${isScrolled ? 'scrolled2' : ''}`}>
+        <div className="div_icone2">
+          <Image src={icone_principal} alt="logo JurisConsultor" className="img_icone2"></Image>
           <h1>JurisConsultor</h1>
         </div>
         {isClient && !isMobile && (
-          <div className="links_header">
+          <div className="links_header2">
             <Link  href="./">Início</Link>
-            <p className='p'>Identificar Necessidades</p>
+            <p className='p2'>Identificar Necessidades</p>
             <Link  href="./Duvidas">Dúvidas frequentes</Link> 
           </div>
         )}
@@ -60,15 +61,16 @@ export default function Identificar() {
           )}
       </header>
       
-      <div className="pag_inicio">
-        <div className="cabecalho">
-        <Image src={balanca} alt="Icone balança" className="img_balança_ide"></Image>
+      <div className="pag_inicio2">
+        <div className="cabecalho2">
+        <Image src={balanca} alt="Icone balança" className="img_balança_ide2"></Image>
         <div>
-          <p className="titulo">Identificador de Necessidades Jurídicas</p>
-          <p className="desc">Responda as perguntas para identificar qual área jurídica você precisa</p>
+          <p className="titulo2">Identificador de Necessidades Jurídicas</p>
+          <p className="desc2">Responda as perguntas para identificar qual área jurídica você precisa</p>
         </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
