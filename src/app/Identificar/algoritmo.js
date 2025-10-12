@@ -11,15 +11,15 @@ export const entidades = [
     {id: 3, nome: 'O encaminhamento para o seu caso são os Centros Judiciários de Solução de Conflitos e Cidadania (CEJUSCs).'},
     {id: 4, nome: 'O encaminhamento para o seu caso são as Câmaras Privadas de Arbitragem e Mediação.'},
     {id: 5, nome: 'O encaminhamento para o seu caso é o Ministério Público do Estado da Bahia (MP/BA).'},
-    {id: 6, nome: 'O encaminhamento para o seu caso é a Contactar um advogado particular da (OAB)'}, // Mantida sua alteração
-    {id: 25, nome: 'O encaminhamento para o seu caso é a buscar a Defensoria Pública'}, // Mantido seu acréscimo
+    {id: 6, nome: 'O encaminhamento para o seu caso é a Contactar um advogado particular da (OAB)'}, 
+    {id: 66, nome: 'O encaminhamento para o seu caso é a buscar a Defensoria Pública'}, 
 
     // Família
     {id: 7, nome: 'ENCAMINHAMENTO IMEDIATO: Busque a Delegacia da Mulher e o Ministério Público. Há urgência e possibilidade de medidas protetivas.'},
     {id: 8, nome: 'O encaminhamento para o seu caso é o Balcão de Justiça na Prefeitura Bairro.'},
     {id: 9, nome: 'O encaminhamento para o seu caso é contratar um Advogado Particular (via OAB).'},
     {id: 10, nome: 'O encaminhamento para o seu caso é a Defensoria Pública.'},
-    {id: 26, nome: 'O encaminhamento para o seu caso é a conciliação na Prefeitura-Bairro de forma presencial ou no portal Salvador Digital'}, // Mantido seu acréscimo
+    {id: 78, nome: 'O encaminhamento para o seu caso é a conciliação na Prefeitura-Bairro de forma presencial ou no portal Salvador Digital'}, // Mantido seu acréscimo
 
     // Trabalhista
     {id: 11, nome: 'O encaminhamento para negociação é o Núcleo Permanente de Incentivo à Autocomposição (NUPIA) do Ministério Público do Trabalho'},
