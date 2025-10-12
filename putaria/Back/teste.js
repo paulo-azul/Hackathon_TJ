@@ -230,6 +230,7 @@ function iniciarQuestionarioInterativo() {
         if (respostasNaoIniciais.length === 4 && !historicoDeRespostas.some(h => h.questionId === 105)) {
             console.log("\nEntendido. Como as opções anteriores não se aplicam, vamos assumir que seu caso se encaixa em 'Outro Assunto'.");
             historicoDeRespostas.push({ questionId: 105, answer: 'SIM' });
+            perguntasIniciaisRandomizaveis = [];
             proximaRodada();
             return;
         }
@@ -299,6 +300,17 @@ function iniciarQuestionarioInterativo() {
                     return;
                 }
                 historicoDeRespostas.push({ questionId: melhorPergunta.id, answer: respostaTexto });
+
+                if (respostaTexto === 'SIM' && todasAsPerguntasIniciais.includes(melhorPergunta.id)) {
+                    console.log("\nOk, focando nesse assunto...");
+                    todasAsPerguntasIniciais.forEach(id => {
+                        if (id !== melhorPergunta.id && !historicoDeRespostas.some(h => h.questionId === id)) {
+                            historicoDeRespostas.push({ questionId: id, answer: 'NAO' });
+                        }
+                    });
+                    perguntasIniciaisRandomizaveis = []; // Esvazia a lista para garantir a transição de fase
+                }
+
                 proximaRodada();
             });
         }
