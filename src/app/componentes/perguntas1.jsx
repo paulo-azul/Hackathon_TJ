@@ -7,7 +7,7 @@ export default function ComponentePergunta({ pergunta, onResponder }) {
   // 1. Verificamos se a pergunta tem um array de 'opcoes' específico
   const opcoes = pergunta.opcoes 
     ? pergunta.opcoes.map(texto => ({ texto })) // Se sim, usamos essas opções
-    : [{ texto: 'SIM' }, { texto: 'NÃO' }];   // Se não, usamos o padrão SIM/NÃO
+    : [{ texto: 'SIM' }, { texto: 'NAO' }];   // Se não, usamos o padrão SIM/NÃO
 
   // 2. Adicionamos a opção "Não sei" a todas as perguntas
   // O valor interno será 'NAO_SEI' para o algoritmo funcionar
