@@ -12,7 +12,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "JurisConsultor",
+  title: "Ágora",
   description: "Site criado para o hackathon da TJBA, equipe coda fofo",
 };
 

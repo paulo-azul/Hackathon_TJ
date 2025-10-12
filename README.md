@@ -1,36 +1,28 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+A equipe escolheu resolver o problema 1 do Hackathon, mapeamos o problema e percebemos que ele é causado pela falta de conhecimento sobre os diversos mecanismos jurídicos para as pessoas, por isso criamos esse sistema que faz perguntas simples e baseado nas respostas ele realiza uma tragem e guia caminhos para o usuário;
 
-## Getting Started
+O que o código faz:
+Estrutura de Dados Híbrida:
 
-First, run the development server:
+entidades: Agora são os resultados finais (os mesmos da Versão 1, ex: 'O encaminhamento... é o PROCON.'). Isso torna o sistema muito mais granular.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+perguntas: Inclui tanto as perguntas iniciais ("É sobre consumo?") quanto as perguntas aninhadas e específicas ("Você já tentou contato com a empresa?"). A novidade é o campo preRequisito, que cria uma dependência lógica (ex: a pergunta 201 só pode ser feita se a resposta para a pergunta 101 foi 'SIM').
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+respostas: A base de conhecimento é muito maior. Ela é gerada automaticamente a partir de uma estrutura de caminhos, que define a sequência de respostas "corretas" para se chegar a cada entidade final.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Algoritmos Aprimorados:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+calcularPesosDasEntidades: A lógica de cálculo de peso é mais sofisticada, com um bônus por acerto e uma penalidade muito maior por erro. Isso faz com que entidades que não correspondem a uma resposta do usuário sejam rapidamente descartadas (sua probabilidade cai drasticamente).
 
-## Learn More
+escolherMelhorPergunta: Agora leva em conta os preRequisitos, garantindo que só fará perguntas que façam sentido no contexto das respostas já dadas.
 
-To learn more about Next.js, take a look at the following resources:
+Motor Interativo de Dois Estágios: Esta é a mudança mais genial.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Estágio 1: Triagem Inicial Aleatória: O sistema sabe que as primeiras perguntas (101 a 104) são para definir a área geral. Em vez de perguntá-las em ordem fixa, ele as embaralha (perguntasIniciaisRandomizaveis). Isso torna a interação menos repetitiva e ajuda a focar rapidamente no que importa. Assim que o usuário responde "SIM" a uma delas, o sistema assume aquela área e preenche as outras como "NAO" automaticamente, passando para o próximo estágio.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Estágio 2: Aprofundamento Probabilístico: Uma vez definida a área geral, o sistema para de usar a lista aleatória e volta a usar o algoritmo escolherMelhorPergunta para fazer as perguntas aninhadas e específicas daquela área, aprofundando o diagnóstico até ter uma certeza estatística (acima de 95% de probabilidade) do encaminhamento correto.
 
-## Deploy on Vercel
+Lógica Adicional:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Perguntas com Múltipla Escolha: O sistema agora suporta perguntas que não são apenas "SIM/NAO", mas que têm uma lista de opções.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Detecção de "Outros Assuntos": Se o usuário responder "NAO" para as 4 primeiras categorias, o sistema é inteligente o suficiente para deduzir que o problema se encaixa em "Outro Assunto" e prossegue a partir daí.

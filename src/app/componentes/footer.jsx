@@ -6,7 +6,7 @@ const Footer = () => {
       <div className={styles.separator} />
       <div className={styles.content}>
         <p className={styles.copyright}>
-          © 2025 JurisConsultor - Orientação Jurídica Inteligente
+          © 2025 Ágora - Orientação Jurídica Inteligente
         </p>
         <p className={styles.disclaimer}>
           Este sistema oferece orientação inicial. Sempre consulte um advogado para casos específicos.

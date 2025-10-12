@@ -1,0 +1,204 @@
+// --- BANCO DE DADOS COMPLETAMENTE ALIMENTADO ---
+
+// As 'entidades' são todos os RESULTADOS FINAIS (encaminhamentos) possíveis
+
+export const entidades = [
+    // Consumo
+    {id: 1, nome: 'O encaminhamento para o seu caso é o PROCON.'},
+    {id: 2, nome: 'O encaminhamento para o seu caso é o Juizado Especial Cível (JEC).'},
+    {id: 20, nome: 'Contato Inicial com a Empresa (Consumo)'},
+    
+    // Conflitos Cíveis/Criminais
+    {id: 3, nome: 'O encaminhamento para o seu caso são os Centros Judiciários de Solução de Conflitos e Cidadania (CEJUSCs).'},
+    {id: 4, nome: 'O encaminhamento para o seu caso são as Câmaras Privadas de Arbitragem e Mediação.'},
+    {id: 5, nome: 'O encaminhamento para o seu caso é o Ministério Público do Estado da Bahia (MP/BA).'},
+    {id: 6, nome: 'O encaminhamento para o seu caso é a Câmara de Mediação da OAB-BA'},
+
+    // Família
+    {id: 7, nome: 'ENCAMINHAMENTO IMEDIATO: Busque a Delegacia da Mulher e o Ministério Público. Há urgência e possibilidade de medidas protetivas.'},
+    {id: 8, nome: 'O encaminhamento para o seu caso é o Balcão de Justiça na Prefeitura Bairro.'},
+    {id: 9, nome: 'O encaminhamento para o seu caso é contratar um Advogado Particular (via OAB).'},
+    {id: 10, nome: 'O encaminhamento para o seu caso é a Defensoria Pública.'},
+
+    // Trabalhista
+    {id: 11, nome: 'O encaminhamento para negociação é o Núcleo Permanente de Incentivo à Autocomposição (NUPIA) do Ministério Público do Trabalho'},
+    {id: 12, nome: 'O encaminhamento para o seu caso é a Defensoria Pública da União (DPU) ou o Sindicato da sua categoria.'},
+    {id: 13, nome: 'Faça uma denúncia urgente ao Ministério Público do Trabalho (MPT) ou à Superintendência Regional do Trabalho.'},
+    {id: 14, nome: 'Faça uma denúncia ao Ministério Público do Trabalho (MPT) e busque orientação no Sindicato da sua categoria.'},
+    {id: 15, nome: 'Para tirar dúvidas, procure o Sindicato da sua categoria ou a Superintendência Regional do Trabalho.'},
+
+    // Outros
+    {id: 16, nome: 'Para problemas com Plano de Saúde, o caminho é registrar uma reclamação na Agência Nacional de Saúde Suplementar (ANS).'},
+    {id: 17, nome: 'Para negativas do INSS, o caminho é entrar com uma ação na Justiça Federal.'},
+    {id: 18, nome: 'Você precisa aguardar a decisão oficial ou entrar com um recurso administrativo no próprio INSS.'},
+    {id: 19, nome: 'Se o PROCON não resolveu, registre uma reclamação no Banco Central e procure a mediação na câmara da OAB.'},
+    {id: 21, nome: 'Primeiro, contate o atendimento ao cliente do seu banco e anote o protocolo.'},
+];
+
+// Todas as perguntas, incluindo as aninhadas, com seus PRÉ-REQUISITOS
+export const perguntas = [
+    // --- Perguntas Iniciais (Nível 1) ---
+    {id: 101, texto: 'O problema é sobre um produto ou serviço que comprei ou contratei?', preRequisito: null},
+    {id: 102, texto: 'Envolve uma briga ou conflito com um vizinho, familiar ou outra pessoa?', preRequisito: null},
+    {id: 103, texto: 'São problemas de família?', preRequisito: null},
+    {id: 104, texto: 'É uma questão do meu trabalho, com meu patrão ou empregado?', preRequisito: null},
+    {id: 105, texto: 'É sobre outro assunto (governo, saúde, INSS, moradia, banco)?', preRequisito: null},
+
+    // --- Ramo Consumo ---
+    {id: 201, texto: 'Você já tentou resolver diretamente com a empresa/lugar onde comprou?', preRequisito: { perguntaId: 101, resposta: 'SIM' }},
+    {id: 202, texto: 'O que aconteceu após tentar resolver com a empresa?', preRequisito: { perguntaId: 201, resposta: 'SIM' }, opcoes: ["Não resolveram ou não responderam.", "Fizeram um acordo mas não cumpriram."]},
+
+    // --- Ramo Conflitos ---
+    {id: 301, texto: 'Existe alguma proposta de diálogo/acordo entre as pessoas envolvidas?', preRequisito: { perguntaId: 102, resposta: 'SIM' }},
+    {id: 302, texto: 'A causa envolveu uma perda material muito grande (acima de R$ 56.480,00)?', preRequisito: { perguntaId: 301, resposta: 'SIM' }},
+    {id: 303, texto: 'Houve agressão física, ameaça ou algum crime?', preRequisito: { perguntaId: 301, resposta: 'NAO' }},
+
+    // --- Ramo Família ---
+    {id: 401, texto: 'Qual o tipo de problema familiar?', preRequisito: { perguntaId: 103, resposta: 'SIM' }, opcoes: ["Pensão, guarda, visitas ou divórcio.", "Violência doméstica."]},
+    {id: 402, texto: 'Há acordo (consenso) entre as pessoas envolvidas?', preRequisito: { perguntaId: 401, resposta: 'Pensão, guarda, visitas ou divórcio.' }},
+    {id: 403, texto: 'Você pode pagar por um advogado?', preRequisito: { perguntaId: 402, resposta: 'NAO' }},
+
+    // --- Ramo Trabalhista ---
+    {id: 501, texto: 'Seu problema trabalhista é sobre o quê?', preRequisito: { perguntaId: 104, resposta: 'SIM' }, opcoes: ["Direitos não pagos (salário, férias, etc).", "Acidente ou doença do trabalho.", "Condições de trabalho ruins (assédio, insegurança).", "Dúvidas sobre contrato ou direitos."]},
+    {id: 502, texto: 'Você possui/possuía carteira de trabalho assinada?', preRequisito: { perguntaId: 501, resposta: ["Direitos não pagos (salário, férias, etc).", "Acidente ou doença do trabalho."] }},
+    {id: 503, texto: 'As pessoas envolvidas desejam negociar para chegar a um acordo?', preRequisito: { perguntaId: 502, resposta: ['SIM', 'NAO'] }},
+    {id: 504, texto: 'Você pode pagar por um advogado?', preRequisito: { perguntaId: 503, resposta: 'NAO' }},
+    {id: 505, texto: 'A irregularidade coloca a vida de trabalhadores em risco imediato?', preRequisito: { perguntaId: 501, resposta: 'Condições de trabalho ruins (assédio, insegurança).' }},
+    
+    // --- Ramo Outros ---
+    {id: 601, texto: 'Seu problema se encaixa em qual categoria?', preRequisito: { perguntaId: 105, resposta: 'SIM' }, opcoes: ["Questões de saúde (SUS ou plano).", "Previdência e benefícios (INSS).", "Problemas com Banco ou Cartão de Crédito."]},
+    {id: 602, texto: 'O problema é com o SUS ou com um Plano de Saúde?', preRequisito: { perguntaId: 601, resposta: 'Questões de saúde (SUS ou plano).' }},
+    {id: 603, texto: 'O INSS já deu uma resposta oficial negando seu pedido?', preRequisito: { perguntaId: 601, resposta: 'Previdência e benefícios (INSS).' }},
+    {id: 604, texto: 'Você já fez uma reclamação inicial no banco?', preRequisito: { perguntaId: 601, resposta: 'Problemas com Banco ou Cartão de Crédito.' }},
+    {id: 605, texto: 'Após reclamar no banco, você foi ao PROCON e o problema foi resolvido?', preRequisito: { perguntaId: 604, resposta: 'SIM' }},
+];
+
+export const respostas = [];
+const todasAsPerguntasIniciais = [101, 102, 103, 104, 105];
+
+function popularRespostas(entidadeId, caminho) {
+    for (const [perguntaId, resposta] of Object.entries(caminho)) {
+        respostas.push({ entidade_id: entidadeId, pergunta_id: parseInt(perguntaId), resposta });
+    }
+    const perguntaInicialDoCaminho = todasAsPerguntasIniciais.find(id => caminho[id]);
+    todasAsPerguntasIniciais.forEach(id => {
+        if (id !== perguntaInicialDoCaminho) {
+            if (!respostas.some(r => r.entidade_id === entidadeId && r.pergunta_id === id)) {
+                 respostas.push({ entidade_id: entidadeId, pergunta_id: id, resposta: 'NAO' });
+            }
+        }
+    });
+}
+const caminhos = { 1: { 101: 'SIM', 201: 'SIM', 202: 'Não resolveram ou não responderam.' },
+    2: { 101: 'SIM', 201: 'SIM', 202: 'Fizeram um acordo mas não cumpriram.' },
+    3: { 102: 'SIM', 301: 'SIM', 302: 'SIM' },
+    4: { 102: 'SIM', 301: 'SIM', 302: 'NAO' },
+    5: { 102: 'SIM', 301: 'NAO', 303: 'SIM' },
+    6: { 102: 'SIM', 301: 'NAO', 303: 'NAO' },
+    7: { 103: 'SIM', 401: 'Violência doméstica.' },
+    8: { 103: 'SIM', 401: 'Pensão, guarda, visitas ou divórcio.', 402: 'SIM' },
+    9: { 
+        103: 'SIM', 401: 'Pensão, guarda, visitas ou divórcio.', 402: 'NAO', 403: 'SIM',
+        104: 'SIM', 501: ["Direitos não pagos (salário, férias, etc).", "Acidente ou doença do trabalho."], 502: ['SIM', 'NAO'], 503: 'NAO', 504: 'SIM'
+    },
+    10: { 103: 'SIM', 401: 'Pensão, guarda, visitas ou divórcio.', 402: 'NAO', 403: 'NAO' },
+    11: { 104: 'SIM', 501: ["Direitos não pagos (salário, férias, etc).", "Acidente ou doença do trabalho."], 502: ['SIM', 'NAO'], 503: 'SIM' },
+    12: { 104: 'SIM', 501: ["Direitos não pagos (salário, férias, etc).", "Acidente ou doença do trabalho."], 502: ['SIM', 'NAO'], 503: 'NAO', 504: 'NAO' },
+    13: { 104: 'SIM', 501: 'Condições de trabalho ruins (assédio, insegurança).', 505: 'SIM' },
+    14: { 104: 'SIM', 501: 'Condições de trabalho ruins (assédio, insegurança).', 505: 'NAO' },
+    15: { 104: 'SIM', 501: 'Dúvidas sobre contrato ou direitos.' },
+    16: { 105: 'SIM', 601: 'Questões de saúde (SUS ou plano).', 602: 'Plano de Saúde' },
+    17: { 105: 'SIM', 601: 'Previdência e benefícios (INSS).', 603: 'SIM' },
+    18: { 105: 'SIM', 601: 'Previdência e benefícios (INSS).', 603: 'NAO' },
+    19: { 105: 'SIM', 601: 'Problemas com Banco ou Cartão de Crédito.', 604: 'SIM', 605: 'NAO'},
+    20: { 101: 'SIM', 201: 'NAO' },
+    21: { 105: 'SIM', 601: 'Problemas com Banco ou Cartão de Crédito.', 604: 'NAO' }, };
+for (const [entidadeId, caminho] of Object.entries(caminhos)) { popularRespostas(parseInt(entidadeId), caminho); }
+
+// --- ALGORITMOS (Estrutura Mantida, sem alterações) ---
+
+export function escolherMelhorPergunta(candidatosAtuais, perguntasJaFeitas, todasAsPerguntas, todasAsRespostas, historicoDeRespostas){
+    const perguntasDisponiveis = todasAsPerguntas.filter(p => !perguntasJaFeitas.includes(p.id));
+
+    const perguntasValidas = perguntasDisponiveis.filter(p => {
+        if (!p.preRequisito) return true;
+        const passoAnterior = historicoDeRespostas.find(h => h.questionId === p.preRequisito.perguntaId);
+        if (!passoAnterior) return false;
+        const preRequisitoRespostas = Array.isArray(p.preRequisito.resposta) ? p.preRequisito.resposta : [p.preRequisito.resposta];
+        return preRequisitoRespostas.includes(passoAnterior.answer);
+    });
+
+    const perguntasAvaliadas = perguntasValidas.map(pergunta => {
+        let contagemRespostas = {};
+        for (const candidato of candidatosAtuais){
+            const respostaEncontrada = todasAsRespostas.find(r => r.entidade_id === candidato.id && r.pergunta_id === pergunta.id);
+            if (respostaEncontrada) {
+                const respostasPossiveis = Array.isArray(respostaEncontrada.resposta) ? respostaEncontrada.resposta : [respostaEncontrada.resposta];
+                respostasPossiveis.forEach(r => {
+                    if (!contagemRespostas[r]) contagemRespostas[r] = 0;
+                    contagemRespostas[r]++;
+                });
+            }
+        }
+        
+        const totalRespostas = Object.values(contagemRespostas).reduce((s, c) => s + c, 0);
+        if (totalRespostas === 0) return {...pergunta, qualidade_ponderada: 0};
+        
+        const maiorGrupo = Object.values(contagemRespostas).length > 0 ? Math.max(...Object.values(contagemRespostas)) : 0;
+        const qualidade_divisao = Object.keys(contagemRespostas).length > 1 ? 1 - (maiorGrupo / totalRespostas) : 0;
+        const fator_relevancia = totalRespostas / candidatosAtuais.length;
+        const qualidade_ponderada = qualidade_divisao * fator_relevancia;
+        
+        return {...pergunta, qualidade_ponderada};
+    });
+
+    const perguntasOrdenadas = perguntasAvaliadas.sort((a, b) => b.qualidade_ponderada - a.qualidade_ponderada);
+
+    if (perguntasOrdenadas.length > 0 && perguntasOrdenadas[0].qualidade_ponderada > 0){
+        return perguntasOrdenadas[0];
+    }
+    return null;
+}
+
+export function calcularPesosDasEntidades(historicoDeRespostas, todasAsEntidades, todasAsRespostas) {
+    let entidadesComPeso = todasAsEntidades.map(e => ({ ...e, peso: 1.0 })); 
+    
+    for (const entidade of entidadesComPeso) {
+        let pesoAtual = 1.0;
+        const bonusAcerto = 2.0;
+        const penalidadeErro = 100.0;
+
+        for (const passo of historicoDeRespostas) {
+
+            if(passo.answer == "NAO_SEI"){
+                continue;
+            }
+
+            const respostaDaEntidadeParaPergunta = todasAsRespostas.find(
+                r => r.entidade_id === entidade.id && r.pergunta_id === passo.questionId
+            );
+
+            if (respostaDaEntidadeParaPergunta) {
+                const respostaEntidade = respostaDaEntidadeParaPergunta.resposta;
+                const respostaUsuario = passo.answer;
+                const corresponde = Array.isArray(respostaEntidade) ? respostaEntidade.includes(respostaUsuario) : respostaEntidade === respostaUsuario;
+                
+                if (corresponde) {
+                    pesoAtual *= bonusAcerto;
+                } else {
+                    pesoAtual /= penalidadeErro;
+                }
+            } else {
+                 pesoAtual /= 2;
+            }
+        }
+        entidade.peso = pesoAtual;
+    }
+
+    const somaDosPesos = entidadesComPeso.reduce((sum, e) => sum + e.peso, 0);
+    if (somaDosPesos > 0) {
+        entidadesComPeso = entidadesComPeso.map(e => ({ ...e, peso: e.peso / somaDosPesos }));
+    }
+
+    return entidadesComPeso.sort((a, b) => b.peso - a.peso);
+}

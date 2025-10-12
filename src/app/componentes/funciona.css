@@ -1,5 +1,5 @@
 
-.func_dic_comp{
+.func_dic_comp20{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -15,10 +15,10 @@
     padding-right: 10px;
 }
 
-.img_componente_func{
+.img_componente_func20{
     width: 50px;
 }
 
-.descricao_func{
+.descricao_func20{
     color: #6b7280;
 }

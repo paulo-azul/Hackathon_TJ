@@ -48,14 +48,14 @@ export default function Duvida() {
     <>
       <header id="main-header" className={`header_pag33 ${isScrolled ? 'scrolled3' : ''}`}>
         <div className="div_icone3">
-          <Image src={icone_principal} alt="logo JurisConsultor" className="img_icone3" />
-          <h1>JurisConsultor</h1>
+          <Image src={icone_principal} alt="logo Ágora" className="img_icone3" />
+          <h1>Ágora</h1>
         </div>
         
         {isClient && !isMobile && (
           <div className="links_header3">
-            <Link href="./">Início</Link>
-            <Link href="./Identificar">Identificar Necessidades</Link>
+            <Link href="/Home" className='link3'>Início</Link>
+            <Link href="/Identificar" className='link3'>Identificar Necessidades</Link>
             <p className='p3'>Dúvidas frequentes</p>
           </div>
         )}

@@ -60,8 +60,8 @@ export default function Home() {
     <div>
       <header id="main-header" className={`header_pag11 ${isScrolled ? 'scrolled1' : ''}`}>
         <div className="div_icone1">
-          <Image src={icone_principal} alt="logo JurisConsultor" className="img_icone1"></Image>
-          <h1>JurisConsultor</h1>
+          <Image src={icone_principal} alt="logo Ágora" className="img_icone1"></Image>
+          <h1>Ágora</h1>
         </div>
         {isClient && !isMobile && (
           <div className="links_header1">
