@@ -33,6 +33,7 @@ export const entidades = [
     {id: 18, nome: 'Você precisa aguardar a decisão oficial ou entrar com um recurso administrativo no próprio INSS.'},
     {id: 19, nome: 'Se o PROCON não resolveu, registre uma reclamação no Banco Central e procure a mediação na câmara da OAB.'},
     {id: 21, nome: 'Primeiro, contate o atendimento ao cliente do seu banco e anote o protocolo.'},
+    {id: 99, nome: 'Não foi possível determinar um encaminhamento específico com as informações fornecidas. Recomendamos que você procure a Defensoria Pública para uma orientação detalhada sobre o seu caso.'}
 ];
 
 // Todas as perguntas, incluindo as aninhadas, com seus PRÉ-REQUISITOS
@@ -170,7 +171,7 @@ export function calcularPesosDasEntidades(historicoDeRespostas, todasAsEntidades
 
         for (const passo of historicoDeRespostas) {
 
-            if(passo.answer == "NAO_SEI"){
+            if(passo.answer === "NAO_SEI"){
                 continue;
             }
 

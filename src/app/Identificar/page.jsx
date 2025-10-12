@@ -26,7 +26,7 @@ export default function Identificar() {
   const [resultadoFinal, setResultadoFinal] = useState(null); // Guarda o OBJETO do resultado final
 
   // Lógica para randomizar as perguntas iniciais (executa apenas uma vez)
-  const [perguntasIniciais] = useState(() => 
+   const [ordemTriagem] = useState(() => 
     [101, 102, 103, 104].sort(() => Math.random() - 0.5)
   );
 
@@ -34,42 +34,67 @@ export default function Identificar() {
   const proximaPergunta = (historicoAtual) => {
     const entidadesComPesos = calcularPesosDasEntidades(historicoAtual, entidades, respostas);
 
-    if (entidadesComPesos[0].peso > 0.95) {
+    if (entidadesComPesos.length > 0 && entidadesComPesos[0].peso > 0.95) {
       setResultadoFinal(entidadesComPesos[0]);
       setPerguntaAtual(null);
       return;
     }
 
-    const idsPerguntasIniciais = new Set([101, 102, 103, 104]);
-    const respondeuSimInicial = historicoAtual.some(h => idsPerguntasIniciais.has(h.questionId) && h.answer === 'SIM');
-    
-    let melhorPergunta;
-    if (perguntasIniciais.length > 0 && !respondeuSimInicial) {
-      const proximoId = perguntasIniciais.shift();
-      melhorPergunta = perguntas.find(p => p.id === proximoId);
-    } else {
-      const candidatos = entidadesComPesos.filter(e => e.peso > 0.001);
-      melhorPergunta = escolherMelhorPergunta(candidatos, historicoAtual.map(h => h.questionId), perguntas, respostas, historicoAtual);
-    }
+    const idsPerguntasIniciais = ordemTriagem; // Usa a ordem aleatória do estado
 
+    const saiuDaTriagem = historicoAtual.some(
+      r => (r.answer === 'SIM' || r.answer === 'NÃO') && idsPerguntasIniciais.includes(r.questionId)
+    );
+
+    const idsPerguntasJaFeitas = historicoAtual.map(r => r.questionId);
+    const perguntasIniciaisDisponiveis = idsPerguntasIniciais.filter(id => !idsPerguntasJaFeitas.includes(id));
+
+    let melhorPergunta;
+
+    // 👇 NOVA VERIFICAÇÃO ADICIONADA AQUI 👇
+    // Se a triagem não acabou (só "Não Sei") mas as perguntas iniciais se esgotaram...
+    if (!saiuDaTriagem && perguntasIniciaisDisponiveis.length === 0) {
+        console.log("MODO: Esgotamento da Triagem. Acionando resultado genérico.");
+        // ...então acionamos nosso resultado genérico e paramos tudo.
+        const resultadoGenerico = entidades.find(e => e.id === 99);
+        setResultadoFinal(resultadoGenerico);
+        setPerguntaAtual(null);
+        return; // IMPORTANTE: Encerra a função aqui.
+    }
+    // --- FIM DA NOVA VERIFICAÇÃO ---
+
+    if (!saiuDaTriagem && perguntasIniciaisDisponiveis.length > 0) {
+      console.log("MODO: Triagem Persistente. Próxima pergunta disponível:", perguntasIniciaisDisponiveis[0]);
+      const proximoId = perguntasIniciaisDisponiveis[0]; 
+      melhorPergunta = perguntas.find(p => p.id === proximoId);
+    } 
+    else {
+      console.log("MODO: Aprofundamento Inteligente.");
+      const candidatos = entidadesComPesos.filter(e => e.peso > 0.001);
+      melhorPergunta = escolherMelhorPergunta(
+          candidatos, 
+          idsPerguntasJaFeitas, 
+          perguntas, 
+          respostas, 
+          historicoAtual
+      );
+    }
+    
     if (melhorPergunta) {
       setPerguntaAtual(melhorPergunta);
     } else {
       setResultadoFinal(entidadesComPesos[0]);
       setPerguntaAtual(null);
     }
-  };
+};
 
   useEffect(() => {
-    proximaPergunta([]);
-  }, []);
+    proximaPergunta(historico);
+}, [historico]);
 
   const handleResponder = (idPergunta, resposta) => {
     const novaResposta = { questionId: idPergunta, answer: resposta };
-    const novoHistorico = [...historico, novaResposta];
-    
-    setHistorico(novoHistorico); // Salva a resposta no histórico
-    proximaPergunta(novoHistorico); // Imediatamente calcula a próxima pergunta
+    setHistorico(historicoAnterior => [...historicoAnterior, novaResposta]);
   };
   
   useEffect(() => {
