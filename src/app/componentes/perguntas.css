@@ -86,3 +86,22 @@
         font-size: 0.9rem;
     }
 }
+
+.func_dic_comp99 {
+  /* Adicionamos 'filter' à lista de propriedades que serão animadas */
+  transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1), 
+              transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              filter 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 1;
+  transform: scale(1);
+  /* Estado inicial sem desfoque */
+  filter: blur(0px);
+}
+
+.func_dic_comp99.transitioning {
+  opacity: 0;
+  transform: scale(0.97);
+  pointer-events: none;
+  /* Adicionamos um leve desfoque durante a transição */
+  filter: blur(4px);
+}

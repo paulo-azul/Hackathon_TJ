@@ -9,7 +9,7 @@ import Funciona from '../componentes/funciona.jsx';
 import Area from '../componentes/areas.jsx';
 import './page.css'
 import NavbarMobile from '../componentes/Navbar_mobile.jsx';
-import balança from '../img/balança.png';
+import balança from '../img/blindfold.png';
 import icone_chat from '../img/conversation.png';
 import icone_multiple from '../img/multiple.png';
 import personalização from '../img/personalização.png';
@@ -60,7 +60,7 @@ export default function Home() {
     <div>
       <header id="main-header" className={`header_pag11 ${isScrolled ? 'scrolled1' : ''}`}>
         <div className="div_icone1">
-          <Image src={icone_principal} alt="logo Ágora" className="img_icone1"></Image>
+          <Image src={balança} alt="logo Ágora" className="img_icone1"></Image>
           <h1>Ágora</h1>
         </div>
         {isClient && !isMobile && (

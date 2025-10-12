@@ -75,22 +75,22 @@ export const perguntas = [
 
     // --- Ramo Conflitos ---
     {id: 301, texto: 'Houve agressão física, ameaça ou algum crime?', preRequisito: { perguntaId: 102, resposta: 'SIM' }},
-    {id: 302, texto: 'O conflito envolveu um dano material (perda de dinheiro ou objeto)?', preRequisito: { perguntaId: 301, resposta: 'NAO' }},
+    {id: 302, texto: 'O conflito envolveu um dano material (perda de dinheiro ou objeto)?', preRequisito: { perguntaId: 301, resposta: 'NÃO' }},
     {id: 303, texto: 'A perda material foi de alto valor (acima de R$ 56.480,00)?', preRequisito: { perguntaId: 302, resposta: 'SIM' }},
-    {id: 304, texto: 'O conflito envolveu um dano não material, como ofensa à honra, imagem ou um acordo verbal que foi quebrado?', preRequisito: { perguntaId: 302, resposta: 'NAO' }},
+    {id: 304, texto: 'O conflito envolveu um dano não material, como ofensa à honra, imagem ou um acordo verbal que foi quebrado?', preRequisito: { perguntaId: 302, resposta: 'NÃO' }},
     {id: 305, texto: 'Você pode pagar por um advogado particular para resolver essa questão?', preRequisito: { perguntaId: 304, resposta: 'SIM'}},
 
     // --- Ramo Família ---
     {id: 401, texto: 'Qual o tipo de problema familiar?', preRequisito: { perguntaId: 103, resposta: 'SIM' }, opcoes: ["Pensão, guarda, visitas ou divórcio.", "Violência doméstica."]},
     {id: 402, texto: 'Há um acordo (consenso) entre as pessoas envolvidas?', preRequisito: { perguntaId: 401, resposta: 'Pensão, guarda, visitas ou divórcio.' }},
-    {id: 403, texto: 'Antes de um processo, vocês estariam abertos a tentar uma conciliação com um mediador?', preRequisito: { perguntaId: 402, resposta: 'NAO' }},
-    {id: 404, texto: 'Você pode pagar por um advogado?', preRequisito: { perguntaId: 403, resposta: 'NAO' }},
+    {id: 403, texto: 'Antes de um processo, vocês estariam abertos a tentar uma conciliação com um mediador?', preRequisito: { perguntaId: 402, resposta: 'NÃO' }},
+    {id: 404, texto: 'Você pode pagar por um advogado?', preRequisito: { perguntaId: 403, resposta: 'NÃO' }},
 
     // --- Ramo Trabalhista ---
     {id: 501, texto: 'Seu problema trabalhista é sobre o quê?', preRequisito: { perguntaId: 104, resposta: 'SIM' }, opcoes: ["Direitos não pagos (salário, férias, etc).", "Acidente ou doença do trabalho.", "Condições de trabalho ruins (assédio, insegurança).", "Dúvidas sobre contrato ou direitos."]},
     {id: 502, texto: 'Você possui/possuía carteira de trabalho assinada?', preRequisito: { perguntaId: 501, resposta: ["Direitos não pagos (salário, férias, etc).", "Acidente ou doença do trabalho."] }},
-    {id: 503, texto: 'As pessoas envolvidas desejam negociar para chegar a um acordo?', preRequisito: { perguntaId: 502, resposta: ['SIM', 'NAO'] }},
-    {id: 504, texto: 'Você pode pagar por um advogado?', preRequisito: { perguntaId: 503, resposta: 'NAO' }},
+    {id: 503, texto: 'As pessoas envolvidas desejam negociar para chegar a um acordo?', preRequisito: { perguntaId: 502, resposta: ['SIM', 'NÃO'] }},
+    {id: 504, texto: 'Você pode pagar por um advogado?', preRequisito: { perguntaId: 503, resposta: 'NÃO' }},
     {id: 505, texto: 'A irregularidade coloca a vida de trabalhadores em risco imediato?', preRequisito: { perguntaId: 501, resposta: 'Condições de trabalho ruins (assédio, insegurança).' }},
 
     // --- Ramo Outros ---
@@ -98,7 +98,7 @@ export const perguntas = [
 
     // Sub-ramo: Governo/Serviço Público
     {id: 606, texto: 'Seu problema é relacionado a um concurso público?', preRequisito: {perguntaId: 601, resposta: 'Problema com o governo ou serviço público (concurso, multas, IPTU, etc).'}},
-    {id: 608, texto: 'Seu problema está relacionado com multas de trânsito?', preRequisito: {perguntaId: 606, resposta: 'NAO'}},
+    {id: 608, texto: 'Seu problema está relacionado com multas de trânsito?', preRequisito: {perguntaId: 606, resposta: 'NÃO'}},
     
     // Sub-ramo: Saúde
     {id: 621, texto: 'O problema é com o SUS ou com um Plano de Saúde?', preRequisito: { perguntaId: 601, resposta: 'Questões de saúde (SUS ou plano de saúde).' }, opcoes: ["SUS", "Plano de Saúde"]},
@@ -132,7 +132,7 @@ function popularRespostas(entidadeId, caminho) {
     todasAsPerguntasIniciais.forEach(id => {
         if (id !== perguntaInicialDoCaminho) {
             if (!respostas.some(r => r.entidade_id === entidadeId && r.pergunta_id === id)) {
-                 respostas.push({ entidade_id: entidadeId, pergunta_id: id, resposta: 'NAO' });
+                 respostas.push({ entidade_id: entidadeId, pergunta_id: id, resposta: 'NÃO' });
             }
         }
     });
@@ -146,40 +146,40 @@ const caminhos = {
     // Ramo Consumo
     1: { 101: 'SIM', 201: 'SIM', 202: 'Não resolveram ou não responderam.' },
     2: { 101: 'SIM', 201: 'SIM', 202: 'Fizeram um acordo mas não cumpriram.' },
-    20: { 101: 'SIM', 201: 'NAO' },
+    20: { 101: 'SIM', 201: 'NÃO' },
 
     // Ramo Conflitos
-    3: { 102: 'SIM', 301: 'NAO', 302: 'SIM', 303: 'SIM' },
-    4: { 102: 'SIM', 301: 'NAO', 302: 'SIM', 303: 'NAO' },
+    3: { 102: 'SIM', 301: 'NÃO', 302: 'SIM', 303: 'SIM' },
+    4: { 102: 'SIM', 301: 'NÃO', 302: 'SIM', 303: 'NÃO' },
     5: { 102: 'SIM', 301: 'SIM' },
 
     // Ramo Família
     7: { 103: 'SIM', 401: 'Violência doméstica.' },
     8: { 103: 'SIM', 401: 'Pensão, guarda, visitas ou divórcio.', 402: 'SIM' },
-    78: { 103: 'SIM', 401: 'Pensão, guarda, visitas ou divórcio.', 402: 'NAO', 403: 'SIM'},
+    78: { 103: 'SIM', 401: 'Pensão, guarda, visitas ou divórcio.', 402: 'NÃO', 403: 'SIM'},
 
     // Ramo Trabalhista
-    11: { 104: 'SIM', 501: ["Direitos não pagos (salário, férias, etc).", "Acidente ou doença do trabalho."], 502: ['SIM', 'NAO'], 503: 'SIM' },
+    11: { 104: 'SIM', 501: ["Direitos não pagos (salário, férias, etc).", "Acidente ou doença do trabalho."], 502: ['SIM', 'NÃO'], 503: 'SIM' },
     13: { 104: 'SIM', 501: 'Condições de trabalho ruins (assédio, insegurança).', 505: 'SIM' },
-    14: { 104: 'SIM', 501: 'Condições de trabalho ruins (assédio, insegurança).', 505: 'NAO' },
+    14: { 104: 'SIM', 501: 'Condições de trabalho ruins (assédio, insegurança).', 505: 'NÃO' },
     15: { 104: 'SIM', 501: 'Dúvidas sobre contrato ou direitos.' },
 
     // Ramo Outros > Saúde
     16: { 105: 'SIM', 601: 'Questões de saúde (SUS ou plano de saúde).', 621: 'Plano de Saúde', 624: 'SIM' },
     22: { 105: 'SIM', 601: 'Questões de saúde (SUS ou plano de saúde).', 621: 'SUS', 622: 'SIM' },
-    23: { 105: 'SIM', 601: 'Questões de saúde (SUS ou plano de saúde).', 621: 'SUS', 622: 'NAO' },
-    25: { 105: 'SIM', 601: 'Questões de saúde (SUS ou plano de saúde).', 621: 'Plano de Saúde', 624: 'NAO' },
+    23: { 105: 'SIM', 601: 'Questões de saúde (SUS ou plano de saúde).', 621: 'SUS', 622: 'NÃO' },
+    25: { 105: 'SIM', 601: 'Questões de saúde (SUS ou plano de saúde).', 621: 'Plano de Saúde', 624: 'NÃO' },
 
     // Ramo Outros > Previdência (INSS)
-    18: { 105: 'SIM', 601: 'Previdência (INSS: aposentadoria, auxílios).', 603: 'NAO' },
+    18: { 105: 'SIM', 601: 'Previdência (INSS: aposentadoria, auxílios).', 603: 'NÃO' },
     
     // Ramo Outros > Bancos
-    19: { 105: 'SIM', 601: 'Problemas com Banco ou Cartão de Crédito.', 604: 'SIM', 627: 'NAO' },
+    19: { 105: 'SIM', 601: 'Problemas com Banco ou Cartão de Crédito.', 604: 'SIM', 627: 'NÃO' },
     1: { 105: 'SIM', 601: 'Problemas com Banco ou Cartão de Crédito.', 604: 'SIM', 627: 'SIM' }, // Se o usuário já foi ao PROCON, a recomendação pode ser a mesma.
-    21: { 105: 'SIM', 601: 'Problemas com Banco ou Cartão de Crédito.', 604: 'NAO' },
+    21: { 105: 'SIM', 601: 'Problemas com Banco ou Cartão de Crédito.', 604: 'NÃO' },
 
     // Ramo Outros > Governo
-    29: { 105: 'SIM', 601: 'Problema com o governo ou serviço público (concurso, multas, IPTU, etc).', 606: 'NAO', 608: 'SIM' },
+    29: { 105: 'SIM', 601: 'Problema com o governo ou serviço público (concurso, multas, IPTU, etc).', 606: 'NÃO', 608: 'SIM' },
     30: { 105: 'SIM', 601: 'Problema com o governo ou serviço público (concurso, multas, IPTU, etc).', 606: 'SIM' },
     
     // Ramo Outros > Genérico / Fallback
@@ -189,15 +189,15 @@ const caminhos = {
 for (const [entidadeId, caminho] of Object.entries(caminhos)) { popularRespostas(parseInt(entidadeId), caminho); }
 
 // Populando os múltiplos caminhos que levam aos resultados 9 (Advogado) e 10 (Defensoria)
-popularRespostas(9, { 102: 'SIM', 301: 'NAO', 302: 'NAO', 304: 'SIM', 305: 'SIM' }); // Conflito
-popularRespostas(9, { 103: 'SIM', 401: 'Pensão, guarda, visitas ou divórcio.', 402: 'NAO', 403: 'NAO', 404: 'SIM' }); // Família
-popularRespostas(9, { 104: 'SIM', 501: ["Direitos não pagos (salário, férias, etc).", "Acidente ou doença do trabalho."], 502: ['SIM', 'NAO'], 503: 'NAO', 504: 'SIM' }); // Trabalhista
+popularRespostas(9, { 102: 'SIM', 301: 'NÃO', 302: 'NÃO', 304: 'SIM', 305: 'SIM' }); // Conflito
+popularRespostas(9, { 103: 'SIM', 401: 'Pensão, guarda, visitas ou divórcio.', 402: 'NÃO', 403: 'NÃO', 404: 'SIM' }); // Família
+popularRespostas(9, { 104: 'SIM', 501: ["Direitos não pagos (salário, férias, etc).", "Acidente ou doença do trabalho."], 502: ['SIM', 'NÃO'], 503: 'NÃO', 504: 'SIM' }); // Trabalhista
 popularRespostas(9, { 105: 'SIM', 601: 'Previdência (INSS: aposentadoria, auxílios).', 603: 'SIM', 625: 'SIM' }); // INSS
 
-popularRespostas(10, { 102: 'SIM', 301: 'NAO', 302: 'NAO', 304: 'SIM', 305: 'NAO' }); // Conflito
-popularRespostas(10, { 103: 'SIM', 401: 'Pensão, guarda, visitas ou divórcio.', 402: 'NAO', 403: 'NAO', 404: 'NAO' }); // Família
-popularRespostas(12, { 104: 'SIM', 501: ["Direitos não pagos (salário, férias, etc).", "Acidente ou doença do trabalho."], 502: ['SIM', 'NAO'], 503: 'NAO', 504: 'NAO' }); // DPU via Trabalhista
-popularRespostas(35, { 105: 'SIM', 601: 'Previdência (INSS: aposentadoria, auxílios).', 603: 'SIM', 625: 'NAO' }); // DPU via INSS
+popularRespostas(10, { 102: 'SIM', 301: 'NÃO', 302: 'NÃO', 304: 'SIM', 305: 'NÃO' }); // Conflito
+popularRespostas(10, { 103: 'SIM', 401: 'Pensão, guarda, visitas ou divórcio.', 402: 'NÃO', 403: 'NÃO', 404: 'NÃO' }); // Família
+popularRespostas(12, { 104: 'SIM', 501: ["Direitos não pagos (salário, férias, etc).", "Acidente ou doença do trabalho."], 502: ['SIM', 'NÃO'], 503: 'NÃO', 504: 'NÃO' }); // DPU via Trabalhista
+popularRespostas(35, { 105: 'SIM', 601: 'Previdência (INSS: aposentadoria, auxílios).', 603: 'SIM', 625: 'NÃO' }); // DPU via INSS
 
 
 // =============================================================================

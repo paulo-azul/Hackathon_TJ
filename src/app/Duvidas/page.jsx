@@ -3,7 +3,7 @@
 import './Pagina.css'
 import Image from "next/image";
 import Link from "next/link";
-import icone_principal from '../img/icone_balança.png';
+import icone_principal from '../img/blindfold.png';
 import { useState, useEffect } from 'react';
 import useTela from '../componentes/Tela.jsx';
 import NavbarMobile from '../componentes/Navbar_mobile.jsx';

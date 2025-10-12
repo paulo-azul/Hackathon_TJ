@@ -1,0 +1,20 @@
+A equipe é composta por:
+    -Paulo Teles Serra Azul | Eng. Comp (UFBA)
+    -André Albiani Barata Junior | Ciência da Comp (UFBA)
+    -Akim da Fonseca Alvarez | Eng. Comp. (UFBA)
+    -Henrique de Carvalho Viana | Direito (UFBA)
+    -Pedro Ferreira Nogueira | Direito (UFBA)
+    -Lorena da Silva de Oliveira | Direito (UFBA)
+
+No site foram utilizados icones do flaticon, link de atribuição dos icones:
+
+<a href="https://www.flaticon.com/free-icons/family" title="family icons">Family icons created by yut1655 - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/money" title="money icons">Money icons created by Kiranshastry - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/themis" title="themis icons">Themis icons created by Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/different" title="different icons">Different icons created by Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/menu" title="menu icons">Menu icons created by ariefstudio - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/personalization" title="personalization icons">Personalization icons created by Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/idea" title="idea icons">Idea icons created by Freepik - Flaticon</a>
+
+
+

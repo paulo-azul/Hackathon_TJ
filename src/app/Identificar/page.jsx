@@ -3,7 +3,7 @@
 import './Pagu.css'
 import Image from "next/image";
 import Link from "next/link";
-import icone_principal from '../img/icone_balança.png';
+import icone_principal from '../img/blindfold.png';
 import { useState, useEffect } from 'react';
 import useTela from '../componentes/Tela.jsx';
 import NavbarMobile from '../componentes/Navbar_mobile.jsx';
@@ -49,7 +49,7 @@ const proximaPergunta = (historicoAtual) => {
     const todosOsIdsIniciaisCheck = [101, 102, 103, 104, 105];
     const respostasIniciais = historicoAtual.filter(r => todosOsIdsIniciaisCheck.includes(r.questionId));
 
-    if (respostasIniciais.length === 5 && respostasIniciais.every(r => r.answer === 'NAO')) {
+    if (respostasIniciais.length === 5 && respostasIniciais.every(r => r.answer === 'NÃO')) {
         const resultadoGenerico = entidades.find(e => e.id === 99);
         if (resultadoGenerico) {
             setResultadoFinal(resultadoGenerico);
@@ -168,7 +168,7 @@ const proximaPergunta = (historicoAtual) => {
       <main className="main-content">
         <div className="pag_inicio2">
           <div className="cabecalho2">
-          <Image src={balanca} alt="Icone balança" className="img_balança_ide2"></Image>
+          <Image src={icone_principal} alt="Icone balança" className="img_balança_ide2"></Image>
           <div>
             <p className="titulo2">Identificador de Necessidades Jurídicas</p>
             <p className="desc2">Responda as perguntas para identificar qual área jurídica você precisa</p>
