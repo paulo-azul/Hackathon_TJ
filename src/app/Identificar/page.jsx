@@ -14,7 +14,7 @@ import ComponentePergunta from '../componentes/perguntas1';
 import {
   entidades,
   perguntas,
-  respostas, // Importe 'respostas' também
+  respostas, 
   calcularPesosDasEntidades,
   escolherMelhorPergunta
 } from './algoritmo.js';
@@ -31,16 +31,36 @@ export default function Identificar() {
   );
 
    // Esta função é o coração da lógica. Ela decide o que mostrar a seguir.
-  const proximaPergunta = (historicoAtual) => {
-    const entidadesComPesos = calcularPesosDasEntidades(historicoAtual, entidades, respostas);
 
-    if (entidadesComPesos.length > 1 && entidadesComPesos[0].peso > entidadesComPesos[1]*1.9) {
-      setResultadoFinal(entidadesComPesos[0]);
-      setPerguntaAtual(null);
-      return;
+const proximaPergunta = (historicoAtual) => {
+    // Mantém a verificação para o "NAO_SEI"
+    const todasAsRespostasSaoNaoSei = historicoAtual.length > 0 && historicoAtual.every(r => r.answer === 'NAO_SEI');
+    if (historicoAtual.length >= 4 && todasAsRespostasSaoNaoSei) {
+        const resultadoGenerico = entidades.find(e => e.id === 99);
+        if (resultadoGenerico) {
+            setResultadoFinal(resultadoGenerico);
+            setPerguntaAtual(null);
+            return;
+        }
     }
 
-    const idsPerguntasIniciais = ordemTriagem; // Usa a ordem aleatória do estado
+    // --- VERIFICAÇÃO PARA O "NÃO" CORRIGIDA ---
+    // Usamos um nome de variável diferente para não haver conflito
+    const todosOsIdsIniciaisCheck = [101, 102, 103, 104, 105];
+    const respostasIniciais = historicoAtual.filter(r => todosOsIdsIniciaisCheck.includes(r.questionId));
+
+    if (respostasIniciais.length === 5 && respostasIniciais.every(r => r.answer === 'NAO')) {
+        const resultadoGenerico = entidades.find(e => e.id === 99);
+        if (resultadoGenerico) {
+            setResultadoFinal(resultadoGenerico);
+            setPerguntaAtual(null);
+            return;
+        }
+    }
+
+    const entidadesComPesos = calcularPesosDasEntidades(historicoAtual, entidades, respostas);
+    
+    const idsPerguntasIniciais = ordemTriagem; 
 
     const saiuDaTriagem = historicoAtual.some(
       r => r.answer === 'SIM' && idsPerguntasIniciais.includes(r.questionId)
@@ -51,24 +71,18 @@ export default function Identificar() {
 
     let melhorPergunta;
 
-   // --- LÓGICA DE SELEÇÃO DE PERGUNTAS ALTERADA ---
-   // --COMMIT INCIO--
-    // Se a triagem principal AINDA NÃO ACABOU (nenhum "SIM") e AINDA HÁ perguntas iniciais para fazer...
     if (!saiuDaTriagem && perguntasIniciaisDisponiveis.length > 0) {
       console.log("MODO: Triagem Principal. Próxima pergunta disponível:", perguntasIniciaisDisponiveis[0]);
       const proximoId = perguntasIniciaisDisponiveis[0]; 
       melhorPergunta = perguntas.find(p => p.id === proximoId);
     }
-    // Se a triagem principal JÁ ACABOU (todas as 4 foram respondidas com "NÃO"), e a pergunta 105 AINDA NÃO FOI FEITA...
     else if (!saiuDaTriagem && perguntasIniciaisDisponiveis.length === 0 && !idsPerguntasJaFeitas.includes(105)) {
         console.log("MODO: Triagem Final. Apresentando a pergunta 'Outros'.");
         melhorPergunta = perguntas.find(p => p.id === 105);
     }
-    // Em todos os outros casos (ou a triagem terminou com "SIM", ou todas as 5 perguntas iniciais já foram feitas)...
     else {
       console.log("MODO: Aprofundamento Inteligente.");
       const candidatos = entidadesComPesos.filter(e => e.peso > 0.001);
-      //--COMMIT INICIO 2--
       const idsDeTodasAsPerguntasIniciais = [101, 102, 103, 104, 105];
       const perguntasParaEscolha = saiuDaTriagem 
         ? perguntas.filter(p => !idsDeTodasAsPerguntasIniciais.includes(p.id)) 
@@ -77,24 +91,21 @@ export default function Identificar() {
       melhorPergunta = escolherMelhorPergunta(
           candidatos, 
           idsPerguntasJaFeitas, 
-          perguntasParaEscolha, // Usamos a lista agora corretamente filtrada
+          perguntasParaEscolha,
           respostas, 
           historicoAtual
       );
-      //--COMMIT FIM 2--
     }
     
-    // Se, após toda a lógica, não houver uma próxima pergunta clara, o sistema apresenta o melhor candidato ou um resultado genérico.
     if (melhorPergunta) {
       setPerguntaAtual(melhorPergunta);
     } else {
-      // Se não há mais perguntas a fazer, define o resultado final como o mais provável.
       const melhorResultado = entidadesComPesos[0] || entidades.find(e => e.id === 99);
       setResultadoFinal(melhorResultado);
       setPerguntaAtual(null);
     }
 };
-//--COMMIT FIM--
+
   useEffect(() => {
     proximaPergunta(historico);
 }, [historico]);
