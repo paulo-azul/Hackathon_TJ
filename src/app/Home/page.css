@@ -7,6 +7,7 @@
   --cor-fundo-claro: #F0F5FA;
   --cor-texto-principal: #1C2B3A;
   --cor-texto-secundario: #5A6673;
+  --cor-amarelo: #FFB81C;
 }
 
 * {
@@ -215,7 +216,7 @@ html, body {
 
 .necessidade_jurd1 {
   padding: 50px;
-  background-color: var(--cor-vermelho-bahia);
+  background-color: var(--cor-azul-bahia);
   color: var(--cor-branco);
   text-align: center;
   display: flex;
@@ -230,7 +231,7 @@ html, body {
 }
 
 .linkamarelo1 {
-  background-color: var(--cor-azul-bahia);
+  background-color: var(--cor-amarelo);
   color: var(--cor-branco);
   padding: 14px 28px;
   border-radius: 8px;
