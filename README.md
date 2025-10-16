@@ -23,3 +23,5 @@ Dois Estados do Algoritmo:
 Estágio 1: Triagem Inicial Aleatória: O sistema sabe que as primeiras perguntas (101 a 104) são para definir a área geral. Em vez de perguntá-las em ordem fixa, ele as embaralha (perguntasIniciaisRandomizaveis). Isso torna a interação menos repetitiva e ajuda a focar rapidamente no que importa. Assim que o usuário responde "SIM" a uma delas, o sistema assume aquela área e preenche as outras como "NAO" automaticamente, passando para o próximo estágio.
 
 Estágio 2: Aprofundamento Probabilístico: Uma vez definida a área geral, o sistema para de usar a lista aleatória e volta a usar o algoritmo escolherMelhorPergunta para fazer as perguntas aninhadas e específicas daquela área, aprofundando o diagnóstico até ter uma certeza estatística (quando a Entidade de maior probabilidade tiver sua probabilidade 90% maior em relação a probabilidade da Entidade com a segunda maior probabilidade) do encaminhamento correto.
+
+Link para a aplicaçao: https://hackathon-tj.vercel.app/Home
