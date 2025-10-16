@@ -1,27 +1,40 @@
-A equipe escolheu resolver o problema 1 do Hackathon, mapeamos o problema e percebemos que ele é causado pela falta de conhecimento sobre os diversos mecanismos jurídicos para as pessoas, por isso criamos esse sistema que faz perguntas simples e baseado nas respostas ele realiza uma tragem e guia caminhos para o usuário;
+Ágora - Sistema de Triagem Jurídica Inteligente
+Projeto desenvolvido para o Hackathon+ TJBA (Outubro de 2025)
 
-A ideia do projeto é uma mescla entre um algoritmo de probabilidade e uma árvore de decisão para encontrar o melhor encaminhamento jurídico para a necessidade do usuário.
+O projeto Ágora é uma solução web criada para o Desafio 1: A dificuldade do cidadão em ter acesso a todas as formas de justiça. Mapeamos o problema e percebemos que ele é causado, em grande parte, pela falta de conhecimento sobre os diversos mecanismos jurídicos disponíveis.
 
-O que o código faz: Estrutura de Dados Híbrida:
+Para solucionar isso, criamos um sistema que, através de perguntas simples e com base nas respostas do usuário, realiza uma triagem inteligente e o guia para o caminho mais eficiente de resolução, com foco em medidas conciliatórias e na "desprocessalização" da vida cívica.
 
-Entidades: São os resultados finais da busca jurídica do usuário (ex: 'O encaminhamento... é o PROCON.'). Esses são as ferramentas que utilizaremos para redirecionar as necessidades do usuário dentro do sistema jurídico com ênfase em medidas conciliativas antes de recomendar processos ("desprocessalização" da vida cívica)
+Link para a aplicação: https://hackathon-tj.vercel.app/Home
 
-Perguntas: Inclui tanto as perguntas iniciais ("É sobre consumo?") quanto as perguntas aninhadas e específicas ("Você já tentou contato com a empresa?"). Uma funcionalidade essencial é o campo preRequisito, que cria uma dependência lógica (ex: a pergunta 201 só pode ser feita se a resposta para a pergunta 101 foi 'SIM').
+Como Funciona
+A ideia do projeto é uma mescla entre um algoritmo de inferência probabilística e uma árvore de decisão para encontrar o melhor encaminhamento jurídico para a necessidade do usuário.
 
-Perguntas com Múltipla Escolha: O sistema suporta perguntas que não são apenas "SIM/NAO", mas que têm uma lista de opções.
+Estrutura de Dados Híbrida
+O núcleo do sistema é composto por uma base de conhecimento bem estruturada:
 
-Respostas: Elas são geradas automaticamente a partir de uma estrutura de caminhos, que define a sequência de respostas "corretas" para se chegar a cada entidade final.
+Entidades: Representam todos os resultados finais (encaminhamentos) possíveis. São as ferramentas que utilizamos para redirecionar as necessidades do usuário dentro do sistema jurídico (ex: PROCON, CEJUSC, Ministério Público).
 
-Algoritmos:
+Perguntas: Inclui tanto as perguntas de triagem inicial ("O problema é sobre um produto ou serviço?") quanto as perguntas de aprofundamento ("Você já tentou resolver diretamente com a empresa?"). Uma funcionalidade essencial é o campo preRequisito, que cria uma dependência lógica, garantindo que uma pergunta só seja feita se o contexto for apropriado.
 
-calcularPesosDasEntidades: A lógica para cálculo de peso, com um bônus por acerto e uma penalidade muito maior por erro. Isso faz com que entidades que não correspondem a uma resposta do usuário sejam rapidamente descartadas (sua probabilidade cai drasticamente).
+Caminhos e Respostas: Uma estrutura que mapeia a sequência de respostas "corretas" para se chegar a cada entidade final. As respostas são geradas dinamicamente a partir desses caminhos, formando a base de conhecimento para o algoritmo.
 
-escolherMelhorPergunta: Leva em conta os preRequisitos para encontrar a melhor pergunta, garantindo que só fará perguntas que façam sentido no contexto das respostas já dadas.
+Algoritmos Principais
+calcularPesosDasEntidades: O coração do sistema. A cada resposta do usuário, este algoritmo recalcula um "peso" para cada entidade. Um bônus é aplicado por acerto, mas uma penalidade muito maior é aplicada por erro. Isso faz com que entidades que não correspondem ao cenário do usuário sejam rapidamente descartadas.
 
-Dois Estados do Algoritmo:
+escolherMelhorPergunta: Este algoritmo analisa as entidades ainda "vivas" (com peso relevante) e escolhe dinamicamente qual a próxima pergunta a ser feita. Ele seleciona a pergunta com o maior potencial de dividir o grupo de possibilidades, otimizando a busca e garantindo que o sistema chegue a uma conclusão com o mínimo de perguntas.
 
-Estágio 1: Triagem Inicial Aleatória: O sistema sabe que as primeiras perguntas (101 a 104) são para definir a área geral. Em vez de perguntá-las em ordem fixa, ele as embaralha (perguntasIniciaisRandomizaveis). Isso torna a interação menos repetitiva e ajuda a focar rapidamente no que importa. Assim que o usuário responde "SIM" a uma delas, o sistema assume aquela área e preenche as outras como "NAO" automaticamente, passando para o próximo estágio.
+O Fluxo do Algoritmo em Dois Estágios
+Estágio 1: Triagem Inicial Aleatória
 
-Estágio 2: Aprofundamento Probabilístico: Uma vez definida a área geral, o sistema para de usar a lista aleatória e volta a usar o algoritmo escolherMelhorPergunta para fazer as perguntas aninhadas e específicas daquela área, aprofundando o diagnóstico até ter uma certeza estatística (quando a Entidade de maior probabilidade tiver sua probabilidade 90% maior em relação a probabilidade da Entidade com a segunda maior probabilidade) do encaminhamento correto.
+O sistema sabe que as primeiras perguntas são cruciais para definir a área geral do problema.
 
-Link para a aplicaçao: https://hackathon-tj.vercel.app/Home
+Para tornar a interação menos repetitiva, ele embaralha a ordem dessas perguntas iniciais.
+
+Assim que o usuário responde "SIM" a uma delas, o sistema assume aquela como a área principal e avança para o próximo estágio.
+
+Estágio 2: Aprofundamento Probabilístico
+
+Com a área geral definida, o sistema passa a usar o algoritmo escolherMelhorPergunta para fazer as perguntas aninhadas e específicas daquele contexto.
+
+O diagnóstico é aprofundado a cada resposta, até que o algoritmo não encontre mais perguntas relevantes a fazer ou que o peso da entidade mais provável seja significativamente maior que as demais, indicando o encaminhamento correto.
